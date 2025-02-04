@@ -15,7 +15,7 @@
 
         // Check if the "last_activity" timestamp is set in the session
         if (isset($_SESSION['last_activity'])) {
-            // Calculate the time elapsed since the last activity
+            // Calc ulate the time elapsed since the last activity
             $elapsed_time = time() - $_SESSION['last_activity'];
 
             // If the elapsed time exceeds the timeout limit, destroy the session
