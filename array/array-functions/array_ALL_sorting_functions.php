@@ -142,6 +142,7 @@
     print_r($arr_rev);
     echo "</pre>";
     echo "<br>";
-    echo "<br>";
+    // echo "<br>";
+    
     // echo "<br>";
 ?>
