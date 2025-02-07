@@ -40,7 +40,7 @@ label {
 
 input {
   padding: 8px 10px;
-  border: 1px solid #ddd;
+  border: 1px solid red;
   border-radius: 5px;
   font-size: 14px;
 }
@@ -48,16 +48,6 @@ input {
 input:focus {
   border-color: #007bff;
   outline: none;
-}
-
-.gender {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.terms {
-  margin: 10px 0;
 }
 
 button {
@@ -74,15 +64,42 @@ button:hover {
   background-color: #0056b3;
 }
 
-input[type="checkbox"],
-input[type="radio"] {
-  margin-right: 5px;
-}
-
 input:invalid {
   border-color: #dc3545;
 }
 
+
 input:valid {
   border-color: #28a745;
 }
+
+/* .phone:invalid {
+  border: 2px solid red;
+} */
+
+
+/* .phone:invalid
+{
+  border: 1px solid red;
+} */
+
+/* phone:placeholder-shown {
+  border: 2px solid red;
+} */
+
+/* input[type="checkbox"],
+input[type="radio"] {
+  margin-right: 5px;
+} */
+
+
+
+/* .gender {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.terms {
+  margin: 10px 0;
+} */
