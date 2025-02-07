@@ -1,12 +1,15 @@
 
-
+<?php 
+include 'db.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registration Form</title>
+  <title>Registration</title>
   <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
   <div class="form-container">
@@ -14,7 +17,7 @@
     <form id="registrationForm" action="/submit" method="POST">
       <!-- Full Name -->
       <label for="fullName">Username:</label>
-      <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required minlength="2">
+      <input type="text" id="fullName" name="Username" placeholder="Enter your full name" required minlength="2">
       
       <!-- Email -->
       <label for="email">Email Address:</label>
@@ -35,8 +38,8 @@
       <br>
       
       <!-- Submit Button -->
-       <a href="http://login.php">
-      <button type="submit">Register</button></a>
+      <button class="button"><a href="http://localhost/1.%20AORC%20TECHNOLOGIES/PRACTICE/4.%20Task%201%20-%20login%20register/login.php"> REGISTER </a></button><br>
+      <button class="button"><a href="http://localhost/1.%20AORC%20TECHNOLOGIES/PRACTICE/4.%20Task%201%20-%20login%20register/login.php"> LOG IN </a></button>
       
       <!-- Gender
       <label>Gender:</label>
