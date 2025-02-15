@@ -1,0 +1,45 @@
+.del
+{
+    background-color: red;
+}
+a:link
+{
+    text-decoration: none;
+    
+}
+
+table, th, td{
+
+    border: 2px solid black;
+    padding: 5px;
+    /* margin-left: 60px; */
+    text-align: center;
+    margin:auto;
+    
+}
+
+
+button {
+    background-color: #28a745;
+    color: rgb(255, 255, 255);
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Login Button */
+button[type="button"] {
+    background-color: #007bff;
+}
+
+button[type="button"]:hover {
+    background-color: #0056b3;
+}
+
+.heading
+{
+    padding:20px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
