@@ -1,90 +1,71 @@
-<?php
-include 'header.php';
-?>
+<link rel="stylesheet" href="css-dashboard.css">
+<!-- <h1>Display All The Records</h1> -->
+<?php 
+    include('db.php');
+    // error_reporting(0);
 
-<!-- ========================  HTML  =============================================  -->
+    $query = "SELECT * FROM register";
+    $data = mysqli_query($conn, $query);
 
-<div id="main-content">
+    $total = mysqli_num_rows($data); //it will presents how many number of rows are present in the table
+    // echo $total;
 
-<h2>All Records</h2>
+    
 
-<table cellpadding="7px">
-
-<thead>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Address</th>
-        <th>Class</th>
-        <th>Phone</th>
-        <th>Action</th>
-        </thead>
-
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Ramesh</td>
-                <td>Delhi</td>
-                <td>BCA</td>
-                <td>9876543210</td>
-                <td>
-                    <a href='edit.php'>Edit</a>
-                    <a href='delete-inline.php'>Delete</a>
-                </td>
-            </tr>
-
-            <tr>
-                <td>2</td>
-                <td>Suresh</td>
-                <td>Punjab</td>
-                <td>BCOM</td>
-                <td>9876543210</td>
-                <td>
-                    <a href='edit.php'>Edit</a>
-                    <a href='delete-inline.php'>Delete</a>
-                </td>
-            </tr>
-
-            <tr>
-                <td>3</td>
-                <td>Suresh</td>
-                <td>Haryana</td>
-                <td>BSC</td>
-                <td>9876543210</td>
-                <td>
-                    <a href='edit.php'>Edit</a>
-                    <a href='delete-inline.php'>Delete</a>
-                </td>
-            </tr>
-
-            <tr>
-                <td>4</td>
-                <td>Krishna</td>
-                <td>Gujrat</td>
-                <td>BCA</td>
-                <td>9876543210</td>
-                <td>
-                    <a href='edit.php'>Edit</a>
-                    <a href='delete-inline.php'>Delete</a>
-                </td>
-            </tr>
-          
-            <tr>
-            <td>5</td>
-                <td>Rohit</td>
-                <td>Delhi</td>
-                <td>BCA</td>
-                <td>9876543210</td>
-                <td>
-                    <a href='edit.php'>Edit</a>
-                    <a href='delete-inline.php'>Delete</a>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-
-</div>
-</div>
+    if($total != 0)
+    {
+        
+        ?>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>INDEX</title>
+        </head>
+        <body>
+            <table>
+                <th class="heading" colspan="7">All The Records</th>
+                <tr>
+                    <th>ID</th>
+                    <th>USER NAME</th>
+                    <th>EMAIL</th>
+                    <th>PASSWORD</th>
+                    <th>CONFIRM PASSWORD</th>
+                    <th>MOBILE</th>
+                    <th> ACTIONS </th>
+                </tr>
+              
+                <?php
+        
+        // echo "Table Has Records";
+        while($result = mysqli_fetch_assoc($data))
+        {
+            echo "<tr>
+            <td>".$result['id']."</td>
+            <td>".$result['username']."</td>
+            <td>".$result['email']."</td>
+            <td>".$result['password']."</td>
+            <td>".$result['confirmPassword']."</td>
+            <td>".$result['phone']."</td>
+            
+            <td> <a href='edit.php?Id=$result[id]'><button> EDIT </button> </a> 
+            <a href='delete.php?Id=$result[id]'> <button class='del'> DELETE </button> </a>
+            </td>
+            </tr>";
+            
+            echo "<br>";
+        }
+    }
+    
+    else{
+        echo "No records Found";
+    }
+    ?>
+  
+  
+</table>
 
 </body>
 </html>
+

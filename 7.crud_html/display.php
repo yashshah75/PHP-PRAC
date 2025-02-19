@@ -10,11 +10,9 @@
     $total = mysqli_num_rows($data); //it will presents how many number of rows are present in the table
     // echo $total;
 
-    
-
     if($total != 0)
     {
-
+        
         ?>
         <table>
             <th class="heading" colspan="6">All The Records</th>
@@ -39,7 +37,7 @@
                     <td>".$result['email']."</td>
                     <td>".$result['password']."</td>
                     <td>".$result['phone']."</td>
-                    <td> <a href='edit.php'> <button> EDIT </button> </a> 
+                    <td> <a href='edit.php?Id=$result[id]&username=$result[username]&email=$result[email]&password=$result['password']&mobile=$result['phone']'><button> EDIT </button> </a> 
                          <a href='delete.php'> <button class='del'> DELETE </button> </a>
                     </td>
                  </tr>";

@@ -1,5 +1,20 @@
 <?php include 'header.php'; ?>
+<?php require_once('db.php'); 
+    $uid = $_GET['Id'];
 
+    $query = "DELETE FROM register WHERE id='$uid'";
+
+    $data = mysqli_query($conn, $query);
+    
+    if($data)
+    {
+        echo "DELETED";
+
+    }
+    else{
+        echo "Failed to deleted";
+    }
+?>
 
 <div id="main-content">
     <h2>Delete Record</h2>
@@ -9,7 +24,7 @@
             <input type="text" name="sid" />
         </div>
         <input class="submit" type="submit" name="deletebtn" value="Delete" />
-    </form>
+     </form>
 </div>
 </div>
 </body>

@@ -25,7 +25,7 @@
             <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" required>
 
             <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" name="phone" placeholder="1234567890" pattern="[0-9]{10}" required>
+            <input type="tel" id="phone" name="phone" placeholder="Mobile Number Should be 10 Digits" pattern="[0-9]{10}" required>
 
             <!-- <button type="submit">REGISTER</button> -->
              <input type="submit" name = "submit" value="submit" class="btn"> </input>
@@ -34,7 +34,7 @@
     </div>
 </body>
 </html>
-<!-- ================================================ PHP CODE FOR FETCH DATABASE ============================================== -->
+<!-- ================================================ PHP CODE FOR FETCH DATABASE & Validations ============================================== -->
 <?php 
 require_once('db.php'); // Include database connection
 
@@ -54,9 +54,24 @@ if(isset($_POST['submit']))
         die("Passwords do not match!");
     }
 
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        die("Invalid email format!");
+    }
+
+    if (strlen($password) < 3) {
+        die("Password must be at least 3 characters long and include an uppercase letter & a number.");
+    }
+
+    // if(strlen($phone) < 10 && strlen($phone) > 10) {  
+    //     $ErrMsg = "Mobile must have 10 digits."."<br>";  
+    //     echo $ErrMsg;  
+    // }
+     
+
+
     // password_hash() function is used to encrypt the password it means it  
     $hashed_password = password_hash($password, PASSWORD_BCRYPT); //BCRYPT is secure hashing method 
-
+    $hashed_cpass = password_hash($confirmPassword, PASSWORD_BCRYPT);
     // Check if email already exists
     $check_email = "SELECT * FROM register WHERE email = ?";
     
@@ -74,9 +89,9 @@ if(isset($_POST['submit']))
     $stmt->close();
 
     // Insert user into the database
-    $sql = "INSERT INTO register (username, email, password, phone) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO register (username, email, password, confirmPassword, phone) VALUES (?, ?, ?, ?, ?)";
     $stmtinsert = $conn->prepare($sql);
-    $stmtinsert->bind_param("ssss", $username, $email, $hashed_password, $phone);    // bind_param() : bind_param() is a function in PHP used with MySQLi prepared statements
+    $stmtinsert->bind_param("ssssi", $username, $email, $hashed_password, $hashed_cpass, $phone);    // bind_param() : bind_param() is a function in PHP used with MySQLi prepared statements
                                                                                      // to bind actual values to placeholders (?) in an SQL query.
     
     if ($stmtinsert->execute()) {
