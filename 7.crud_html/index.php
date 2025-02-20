@@ -25,15 +25,15 @@
         </head>
         <body>
             <table>
-                <th class="heading" colspan="7">All The Records</th>
+                <th class="heading" colspan="8">All The Records</th>
                 <tr>
-                    <th width="5%">ID</th>
-                    <th width="5%">User_image</th>
-                    <th width="5%">USER NAME</th>
-                    <th width="5%">EMAIL</th>
+                    <th width="3%">ID</th>
+                    <th>User_image</th>
+                    <th>USER NAME</th>
+                    <th>EMAIL</th>
                     <th>PASSWORD</th>
                     <th>CONFIRM PASSWORD</th>
-                    <th width="5%">MOBILE</th>
+                    <th>MOBILE</th>
                     <th> ACTIONS </th>
                 </tr>
               
