@@ -27,12 +27,13 @@
             <table>
                 <th class="heading" colspan="7">All The Records</th>
                 <tr>
-                    <th>ID</th>
-                    <th>USER NAME</th>
-                    <th>EMAIL</th>
+                    <th width="5%">ID</th>
+                    <th width="5%">User_image</th>
+                    <th width="5%">USER NAME</th>
+                    <th width="5%">EMAIL</th>
                     <th>PASSWORD</th>
                     <th>CONFIRM PASSWORD</th>
-                    <th>MOBILE</th>
+                    <th width="5%">MOBILE</th>
                     <th> ACTIONS </th>
                 </tr>
               
@@ -43,6 +44,7 @@
         {
             echo "<tr>
             <td>".$result['id']."</td>
+            <td><img src = '".$result['User_image']."' height='100px' width='100px'></td>
             <td>".$result['username']."</td>
             <td>".$result['email']."</td>
             <td>".$result['password']."</td>

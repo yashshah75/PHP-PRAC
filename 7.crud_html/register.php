@@ -10,8 +10,11 @@
 <body>
     <div class="form-container">
         <h2>Register</h2>
-        <form method="POST" action="register.php">     
-           
+        <form method="POST" action="register.php" enctype = "multipart/form-data">     
+
+            <label for="File">Your Photo:</label>
+            <input type="file" name="upload_file" id="" >
+
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" placeholder="Enter your full name" required>
 
@@ -40,6 +43,14 @@ require_once('db.php'); // Include database connection
 
 if(isset($_POST['submit']))
 {
+    
+    //for upload the file
+
+    $filename =  $_FILES["upload_file"]["name"];
+    $temp_name = $_FILES["upload_file"]["tmp_name"];
+    $folder = "images/".$filename;
+    move_uploaded_file($temp_name, $folder);
+
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
@@ -47,7 +58,7 @@ if(isset($_POST['submit']))
     $phone = trim($_POST['phone']);
 
     if(empty($username) || empty($email) || empty($password) || empty($confirmPassword) || empty($phone)) {
-        die("All fields are required!");
+        die("All fields are required! ");
     }
 
     if ($password !== $confirmPassword) {
@@ -89,9 +100,9 @@ if(isset($_POST['submit']))
     $stmt->close();
 
     // Insert user into the database
-    $sql = "INSERT INTO register (username, email, password, confirmPassword, phone) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO register (User_image, username, email, password, confirmPassword, phone) VALUES (?,?, ?, ?, ?, ?)";
     $stmtinsert = $conn->prepare($sql);
-    $stmtinsert->bind_param("ssssi", $username, $email, $hashed_password, $hashed_cpass, $phone);    // bind_param() : bind_param() is a function in PHP used with MySQLi prepared statements
+    $stmtinsert->bind_param("sssssi", $folder, $username, $email, $hashed_password, $hashed_cpass, $phone);    // bind_param() : bind_param() is a function in PHP used with MySQLi prepared statements
                                                                                      // to bind actual values to placeholders (?) in an SQL query.
     
     if ($stmtinsert->execute()) {

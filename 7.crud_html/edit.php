@@ -87,9 +87,11 @@
         if (strlen($password) < 3) {
             die("Password must be at least 3 characters long and include an uppercase letter & a number.");
         }
+        // Password will be encrypted by using 
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT); //BCRYPT is secure hashing method 
+        $hashed_cpass = password_hash($confirmPassword, PASSWORD_BCRYPT);
 
-
-        $query = "UPDATE register SET username='$username', email='$email', password='$password', confirmPassword='$confirmPassword', phone='$phone' WHERE id='$uid'";
+        $query = "UPDATE register SET username='$username', email='$email', password='$hashed_password', confirmPassword='$hashed_cpass', phone='$phone' WHERE id='$uid'";
 
         $data = mysqli_query($conn,$query);
     
