@@ -1,8 +1,27 @@
+<?php 
+    session_start();
+   
+    echo "Welcome"." ".$_SESSION['user_name'];
+?>
+
+
 <link rel="stylesheet" href="css-dashboard.css">
 <!-- <h1>Display All The Records</h1> -->
 <?php 
+
     include('db.php');
     // error_reporting(0);
+    
+    $user_profile = $_SESSION['user_name']; 
+
+    if($user_profile == true)
+    {
+        // echo "Logged In";
+    }
+    else
+    {
+        header('location:login.php');
+    }
 
     $query = "SELECT * FROM register";
     $data = mysqli_query($conn, $query);
@@ -24,7 +43,8 @@
             <title>INDEX</title>
         </head>
         <body>
-            <table>
+    <center>
+        <table>
                 <th class="heading" colspan="8">All The Records</th>
                 <tr>
                     <th width="3%">ID</th>
@@ -66,7 +86,10 @@
     ?>
   
   
-</table>
+    </table>
+</center>
+
+<input type="submit" value="logout" name="logout" class="" style="cursor:pointer">
 
 </body>
 </html>

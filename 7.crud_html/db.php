@@ -10,7 +10,7 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 // $sql = $conn-> "insert into register (username, email, password, confirmPassword, phone) VALUES (?,?,?,?,?)";
 
 if ($conn) {
-  // echo "New record created successfully";
+  // echo "Connected successfully";
 }
 else 
 {

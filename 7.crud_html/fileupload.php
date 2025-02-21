@@ -15,10 +15,10 @@ error_reporting(0);
       <form action="" method="POST" enctype = "multipart/form-data">
       File : <input type="file" name="upload_file" id="">
       <br><br>
-             <input type="submit" name="submit" vallue="Upload" id="">
+             <input type="submit" name="submit" value="Upload" id="">
       </form>
 </body>
-</html>
+</html>ss
 
 
 <?php 

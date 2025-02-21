@@ -1,3 +1,9 @@
+<?php 
+  session_start();
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,28 +14,62 @@
 </head>
 <body>
   <div class="form-container">
+    
     <h2>Log in</h2>
-    <form id="registrationForm" action="/submit" method="POST">
-      <!-- Full Name -->
-      <label for="fullName">Username Or Email:</label>
-      <input type="text" id="fullName" name="fullName" placeholder="Enter your User name or Email" required minlength="2">
-      
-      <!-- Password -->
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" placeholder="Enter your password" required minlength="5">
-      
-      <!-- Confirm Password -->
-      <label for="confirmPassword">Confirm Password:</label>
-      <input type="password" id="confirmPassword" name="confirm_password" placeholder="Re-enter your password"  required>
+    
+      <form id="registrationForm" action="#" method="POST" autocomplete = "off">
+        <!-- Full Name -->
+        <label for="Username">Username Or Email:</label>
+        <input type="text" id="username" name="username" placeholder="Enter your User name or Email" required minlength="2">
+        
+        <!-- Password -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required minlength="3">
 
-      <br>
-      
-      <!-- Submit Button -->
-      <button class="btn">
-            <a href="./dashboard.php"> Log in </a>
-      </button>
+        <!-- <label for="forgetpassword">Password:</label> -->
+        <br>
+          <a href="forget_pass.php">Forget Password?</a>
+        <br>
+        
+        <!-- Submit Button -->
+        <input type="submit" value="Login" name="login" class="loginbtn">
+    
 
-    </form>
+        <br>
+            New Member? <br> <a href="register.php">Register</a>
+        
+        
+      </form>
   </div>
 </body>
 </html>
+
+
+<?php 
+  include("db.php");
+
+  if(isset($_POST['login']))
+  {
+    $username = $_POST['username'];
+    // $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $query = "SELECT * FROM register WHERE username = '$username' && password = '$password'";
+    
+    $data = mysqli_query($conn, $query);
+
+    $total = mysqli_num_rows($data);
+    // echo $total;
+
+    if($total == 1)
+    {
+        $_SESSION['user_name'] = $username;
+        header('location:index.php');     // or else you can use html redirect meta tag
+    }
+    else{
+      echo "login failed";
+    }
+  }
+
+
+?>

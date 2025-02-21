@@ -1,8 +1,19 @@
 <?php 
+    session_start();
     require_once('db.php'); // Include database connection
     //error_reporting(0); 
     $uid = $_GET['Id'];
     
+    $user_profile = $_SESSION['user_name']; 
+
+    if($user_profile == true)
+    {
+        // echo "Logged In";
+    }
+    else
+    {
+        header('location:login.php');
+    }
     
     $query = "SELECT * FROM register where id='$uid'";
     $data = mysqli_query($conn, $query);

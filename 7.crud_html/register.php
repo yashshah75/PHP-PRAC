@@ -13,7 +13,7 @@
         <form method="POST" action="register.php" enctype = "multipart/form-data">     
 
             <label for="File">Your Photo:</label>
-            <input type="file" name="upload_file" id="" >
+            <input type="file" name="upload_file" id="" required>
 
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" placeholder="Enter your full name" required>
@@ -22,7 +22,7 @@
             <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            <input type="password" id="password" name="password" placeholder="Enter your password" minlength="3" required>
 
             <label for="confirmPassword">Confirm Password:</label>
             <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" required>
@@ -72,6 +72,7 @@ if(isset($_POST['submit']))
     if (strlen($password) < 3) {
         die("Password must be at least 3 characters long and include an uppercase letter & a number.");
     }
+
 
     // if(strlen($phone) < 10 && strlen($phone) > 10) {  
     //     $ErrMsg = "Mobile must have 10 digits."."<br>";  
