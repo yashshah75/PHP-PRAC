@@ -18,7 +18,7 @@ error_reporting(0);
              <input type="submit" name="submit" value="Upload" id="">
       </form>
 </body>
-</html>ss
+</html>
 
 
 <?php 
