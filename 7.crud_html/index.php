@@ -1,26 +1,29 @@
 <?php 
-    session_start();
-   
-    echo "Welcome"." ".$_SESSION['user_name'];
-?>
 
+    session_start();
+    include('db.php');
+
+    echo "Welcome ".$_SESSION['user_name'];
+?>
 
 <link rel="stylesheet" href="css-dashboard.css">
 <!-- <h1>Display All The Records</h1> -->
-<?php 
 
-    include('db.php');
+<?php  
     // error_reporting(0);
-    
-    $user_profile = $_SESSION['user_name']; 
+
+    $user_profile = $_SESSION['user_name'];
+    // echo $user_profile; 
+    // exit();
 
     if($user_profile == true)
     {
         // echo "Logged In";
+        // header('location:login.php');
     }
     else
     {
-        header('location:login.php');
+        echo "Login Failed";
     }
 
     $query = "SELECT * FROM register";
@@ -88,9 +91,9 @@
   
     </table>
 </center>
-
-<input type="submit" value="logout" name="logout" class="" style="cursor:pointer">
-
+<a href="login.php">
+<input type="submit" value="logout" name="logout" class="btn" style="cursor:pointer">
+</a>
 </body>
 </html>
 

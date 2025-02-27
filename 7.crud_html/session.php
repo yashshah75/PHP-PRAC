@@ -2,11 +2,11 @@
 
 session_start();
 
-$_SESSION["username"] = "Yash";
+$_SESSION["user_name"] = "Yash";
 
-echo $_SESSION["username"];
+echo $_SESSION["user_name"];
 
 // session_unset();
 
-echo $_SESSION["username"];
+// echo $_SESSION["user_name"];
 ?>

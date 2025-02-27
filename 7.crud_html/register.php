@@ -104,8 +104,7 @@ if(isset($_POST['submit']))
     $sql = "INSERT INTO register (User_image, username, email, password, confirmPassword, phone) VALUES (?,?, ?, ?, ?, ?)";
     $stmtinsert = $conn->prepare($sql);
     $stmtinsert->bind_param("sssssi", $folder, $username, $email, $hashed_password, $hashed_cpass, $phone);    // bind_param() : bind_param() is a function in PHP used with MySQLi prepared statements
-                                                                                     // to bind actual values to placeholders (?) in an SQL query.
-    
+                                                                                     // to bind actual values to placeholders (?) in an SQL query
     if ($stmtinsert->execute()) {
         echo "Successfully registered!";
         header("Location: login.php"); // Redirect to login page
