@@ -54,10 +54,10 @@
             <input type="email" value= "<?php echo $result['email']; ?>" id="email" name="email">
 
             <label for="password">Password:</label>
-            <input type="text" value= "<?php echo $result['password']; ?>"  id="password" name="password"  >
+            <input type="password" value= "<?php echo $result['password']; ?>"  id="password" name="password"  >
 
             <label for="confirmPassword">Confirm Password:</label>
-            <input type="text" name= "confirmPassword" value= "<?php echo $result['confirmPassword']; ?>"  id="confirmPassword">
+            <input type="password" name= "confirmPassword" value= "<?php echo $result['confirmPassword']; ?>"  id="confirmPassword">
 
             <label for="phone">Phone Number:</label>
             <input type="tel" value= "<?php echo $result['phone']; ?>" id="phone" name="phone" placeholder="1234567890" pattern="[0-9]{10}" >

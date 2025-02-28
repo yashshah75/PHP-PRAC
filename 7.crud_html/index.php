@@ -1,24 +1,17 @@
 <?php 
-
     session_start();
-    // if (!isset($_SESSION['user_name'])) {
-    //     echo "Session run";
-    //     exit();
-    // }
     include('db.php');
 
+    echo "<center>";
     echo "Welcome ".$_SESSION['user_name'];
+    echo "</center>";
 ?>
 
 <link rel="stylesheet" href="css-dashboard.css">
-<!-- <h1>Display All The Records</h1> -->
 
 <?php  
-    // error_reporting(0);
-
+    
     $user_profile = $_SESSION['user_name'];
-    // echo $user_profile; 
-    // exit();
 
     if($user_profile == TRUE)
     {
@@ -27,17 +20,12 @@
     else
     {
         header('location: login.php');
-        // echo "Logged In";
-        // echo "Login Failed";
     }
 
     $query = "SELECT * FROM register";
     $data = mysqli_query($conn, $query);
 
     $total = mysqli_num_rows($data); //it will presents how many number of rows are present in the table
-    // echo $total;
-
-    
 
     if($total != 0)
     {
@@ -92,13 +80,12 @@
         echo "No records Found";
     }
     ?>
-  
-  
+
     </table>
+    <a href="login.php">
+        <input type="submit" value="logout" name="logout" class="btn" style="cursor:pointer">
+    </a>
 </center>
-<a href="login.php">
-<input type="submit" value="logout" name="logout" class="btn" style="cursor:pointer">
-</a>
 </body>
 </html>
 

@@ -1,13 +1,13 @@
-<?php include 'header.php'; ?>
+
 <?php require_once('db.php'); 
     $uid = $_GET['Id'];
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['confirm'])) {
-        echo "<div style='color: green; text-align: center;'>Action Confirmed!</div>";
-    } elseif (isset($_POST['cancel'])) {
-        echo "<div style='color: red; text-align: center;'>Action Cancelled!</div>";
-    }
-}
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     if (isset($_POST['confirm'])) {
+//         echo "<div style='color: green; text-align: center;'>Action Confirmed!</div>";
+//     } elseif (isset($_POST['cancel'])) {
+//         echo "<div style='color: red; text-align: center;'>Action Cancelled!</div>";
+//     }
+// }
 ?>
 
 <form method="POST">
@@ -17,20 +17,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </form>
 <?php
 
-    $query = "DELETE FROM register WHERE id='$uid'";
-
-    $data = mysqli_query($conn, $query);
-    
-    if($data)
+    if(isset($_POST['confirm']))
     {
-        echo "DELETED";
+        $query = "DELETE FROM register WHERE id='$uid'";
 
-    }
-    else{
-        echo "Failed to deleted";
-    }
+        $data = mysqli_query($conn, $query);
+        
+        if($data)
+        {
+            echo "DELETED";
+        }
+        else{
+            echo "Failed to deleted";
+        }
+}
 ?>
-
+<!-- 
 <div id="main-content">
     <h2>Delete Record</h2>
     <form class="post-form" action="" method="post">
@@ -39,8 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="text" name="sid" />
         </div>
         <input class="submit" type="submit" name="deletebtn" value="Delete" />
-     </form>
-</div>
-</div>
+     </form> -->
+<!-- </div>
+</div> -->
 </body>
 </html>
