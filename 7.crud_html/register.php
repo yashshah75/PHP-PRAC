@@ -93,7 +93,7 @@ if(isset($_POST['submit']))
     
     $stmt->bind_param("s", $email); //bind_param
     $stmt->execute();
-    $stmt->store_result();
+    $stmt->store_result();                                   
 
     if ($stmt->num_rows > 0) {
         die("Email already registered!");

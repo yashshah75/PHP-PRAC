@@ -1,6 +1,10 @@
 <?php 
 
     session_start();
+    // if (!isset($_SESSION['user_name'])) {
+    //     echo "Session run";
+    //     exit();
+    // }
     include('db.php');
 
     echo "Welcome ".$_SESSION['user_name'];
@@ -16,14 +20,15 @@
     // echo $user_profile; 
     // exit();
 
-    if($user_profile == true)
+    if($user_profile == TRUE)
     {
-        // echo "Logged In";
-        // header('location:login.php');
+        // header('Location: register.php');
     }
     else
     {
-        echo "Login Failed";
+        header('location: login.php');
+        // echo "Logged In";
+        // echo "Login Failed";
     }
 
     $query = "SELECT * FROM register";
