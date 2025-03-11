@@ -53,13 +53,14 @@
 
     if(isset($_POST['login'])) {
       $username = $_POST['username'];
+      // $email = $_POST['email'];
       $password = $_POST['password'];
       
-      $query = "SELECT password FROM register WHERE username = ?";
+      $query = "SELECT username, email, password FROM register WHERE username = ? OR email = ?";
       $stmt = mysqli_prepare($conn, $query);
-      mysqli_stmt_bind_param($stmt, "s", $username);
+      mysqli_stmt_bind_param($stmt, "ss", $username, $username);
       mysqli_stmt_execute($stmt);
-      $result = mysqli_stmt_get_result($stmt);
+      $result = mysqli_stmt_get_result( $stmt);
       
       if ($row = mysqli_fetch_assoc($result)) {
           $hashedpassword = $row['password'];
@@ -78,67 +79,9 @@
       // mysqli_stmt_close($stmt);
       // mysqli_close($conn);
     }
-      
-        // mysqli_stmt_close($check);
+     ?>
 
-    //     $stmt = mysqli_prepare($conn, $query);
-    //     echo $stmts;
-    //     exit();
-    //     echo $stmt;
-    //     exit();
-    //     mysqli_stmt_bind_param($stmt, "s", $username);
-    //     mysqli_stmt_execute($stmt);
-    //     $result = mysqli_stmt_get_result($stmt);
-
-    //     if ($row = mysqli_fetch_assoc($result)) {
-    //         if (password_verify($password, $row['password'])) {
-    //             // session_start();
-    //             $_SESSION['user_name'] = $username;
-    //             header('location:index.php'); // Redirect on success
-                
-    //         } else {
-    //             echo "Invalid username or password";
-    //         }
-    //     } else {
-    //         echo "Invalid username or password";
-    //     }
-    // }
-
-
-    // ========================================================================================    
-    //      Use prepared statements to prevent SQL injection
-    //     $query = "SELECT * FROM register WHERE username = $username";
-    //     $check = mysqli_query($conn, $query);
-    //     $result = mysqli_fetch_assoc($check);
-    //     $uname = $result['username'];
-    //     $upass = $result['password'];
-
-    //     if (mysqli_num_rows($check) > 0) 
-    //     {
-    //         // Verify the password using password_verify()
-    //         if (password_verify($password, $upass)) {
-    //           echo "Username and Password are correct";
-    //           $_SESSION['user_name'] = $username;
-    //           header('location:index.php'); // Redirect to homepage
-    //           // exit();
-    //         } 
-    //         else 
-    //         {
-    //           echo "Incorrect Username or Password";
-    //         }
-    //     }
-    // }
-    // ?>
-
-        
-        <!-- // if($total == 1)
-        // {
-        //     $_SESSION['user_name'] = $username;
-        //     header('location:index.php');     // or else you can use html redirect meta tag
-        // }
-        // else{
-        //   echo "login failed";
-        // } -->
+  
       
 
 

@@ -54,10 +54,10 @@
             <input type="email" value= "<?php echo $result['email']; ?>" id="email" name="email">
 
             <label for="password">Password:</label>
-            <input type="password" value= "<?php echo $result['password']; ?>"  id="password" name="password"  >
+            <input type="text" value= "<?php echo $result['password']; ?>"  id="password" name="password"  >
 
             <label for="confirmPassword">Confirm Password:</label>
-            <input type="password" name= "confirmPassword" value= "<?php echo $result['confirmPassword']; ?>"  id="confirmPassword">
+            <input type="text" name= "confirmPassword" value= "<?php echo $result['confirmPassword']; ?>"  id="confirmPassword">
 
             <label for="phone">Phone Number:</label>
             <input type="tel" value= "<?php echo $result['phone']; ?>" id="phone" name="phone" placeholder="1234567890" pattern="[0-9]{10}" >
@@ -117,7 +117,7 @@
             ?>
 
             <!-- Used to redirect on index.php page after 2 second -->
-            <meta http-equiv = "refresh" content = "2; url = http://localhost/1.%20AORC%20TECHNOLOGIES/PRACTICE/7.crud_html/index.php" />
+            <meta http-equiv = "refresh" content = "20; url = http://localhost/1.%20AORC%20TECHNOLOGIES/PRACTICE/7.crud_html/index.php" />
         
         <?php
             echo "";

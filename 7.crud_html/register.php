@@ -58,7 +58,7 @@ if(isset($_POST['submit']))
     $phone = trim($_POST['phone']);
 
     if(empty($username) || empty($email) || empty($password) || empty($confirmPassword) || empty($phone)) {
-        die("All fields are required! ");
+        die("All fields are required!");
     }
 
     if ($password !== $confirmPassword) {
@@ -103,8 +103,9 @@ if(isset($_POST['submit']))
     // Insert user into the database
     $sql = "INSERT INTO register (User_image, username, email, password, confirmPassword, phone) VALUES (?,?, ?, ?, ?, ?)";
     $stmtinsert = $conn->prepare($sql);
-    $stmtinsert->bind_param("sssssi", $folder, $username, $email, $hashed_password, $hashed_cpass, $phone);    // bind_param() : bind_param() is a function in PHP used with MySQLi prepared statements
-                                                                                     // to bind actual values to placeholders (?) in an SQL query
+
+    $stmtinsert->bind_param("ssssss", $folder, $username, $email, $hashed_password, $hashed_cpass, $phone);    // bind_param() : bind_param() is a function in PHP used with MySQLi prepared statements
+                                                                                       // to bind actual values to placeholders (?) in an SQL query
     if ($stmtinsert->execute()) {
         echo "Successfully registered!";
         header("Location: login.php"); // Redirect to login page
