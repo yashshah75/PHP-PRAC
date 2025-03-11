@@ -1,18 +1,22 @@
+body{ 
+        margin: 0;
+        padding: 0;
+}
+
 table {
     border: 1px solid black;
-    /* margin: auto; */
-    
-    /* border-collapse: collapse; */
+    margin-top: 0;
+    padding-top: 0;
 }  
 th{
-    /* width:10%; */
+   
     border: 1px solid black;
     text-align: center;
-    /* padding: 10px; */
+   
 }
 
 td{
-   /* padding: 2px; */
+   
     text-align: center;
     border: 1px solid black;
 }

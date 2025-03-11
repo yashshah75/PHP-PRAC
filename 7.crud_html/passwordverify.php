@@ -1,9 +1,5 @@
 <?php 
 
-
-
-
-
 $plaintext = "yash123"."<br>";
 $hashed = password_hash($plaintext, PASSWORD_BCRYPT);
 

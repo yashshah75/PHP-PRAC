@@ -2,7 +2,7 @@
     session_start();
     include('db.php');
 
-    echo "<center>";
+    echo "<br> <center>";
     echo "Welcome ".$_SESSION['user_name'];
     echo "</center>";
 ?>
@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="css-dashboard.css">
 
 <?php  
-    
+
     $user_profile = $_SESSION['user_name'];
 
     if($user_profile == TRUE)
@@ -33,24 +33,25 @@
         ?>
         <!DOCTYPE html>
         <html lang="en">
+
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>INDEX</title>
         </head>
         <body>
-    <center>
+    
         <table>
                 <th class="heading" colspan="8">All The Records</th>
                 <tr>
-                    <th width="3%">ID</th>
-                    <th>User_image</th>
-                    <th>USER NAME</th>
-                    <th>EMAIL</th>
-                    <th>PASSWORD</th>
-                    <th>CONFIRM PASSWORD</th>
-                    <th>MOBILE</th>
-                    <th> ACTIONS </th>
+                    <th> ID</th>
+                    <th> User_image</th>
+                    <th width="20%"> USER NAME</th>
+                    <th> EMAIL</th>
+                    <th> PASSWORD</th>
+                    <th> CONFIRM PASSWORD</th>
+                    <th width="50%"> MOBILE</th>
+                    <th width="100%"> ACTIONS </th>
                 </tr>
               
                 <?php
@@ -60,7 +61,7 @@
         {
             echo "<tr>
             <td>".$result['id']."</td>
-            <td><img src = '".$result['User_image']."' height='100px' width='100px'></td>
+            <td><img src = '".$result['User_image']."' height='50px' width='50px'></td>
             <td>".$result['username']."</td>
             <td>".$result['email']."</td>
             <td>".$result['password']."</td>
@@ -82,10 +83,11 @@
     ?>
 
     </table>
+
     <a href="login.php">
         <input type="submit" value="logout" name="logout" class="btn" style="cursor:pointer">
     </a>
-</center>
+
 </body>
 </html>
 

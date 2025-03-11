@@ -1,13 +1,6 @@
 
 <?php require_once('db.php'); 
     $uid = $_GET['Id'];
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     if (isset($_POST['confirm'])) {
-//         echo "<div style='color: green; text-align: center;'>Action Confirmed!</div>";
-//     } elseif (isset($_POST['cancel'])) {
-//         echo "<div style='color: red; text-align: center;'>Action Cancelled!</div>";
-//     }
-// }
 ?>
 
 <form method="POST">

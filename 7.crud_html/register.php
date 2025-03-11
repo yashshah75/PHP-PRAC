@@ -22,13 +22,13 @@
             <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" minlength="3" required>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
 
             <label for="confirmPassword">Confirm Password:</label>
             <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" required>
 
             <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" name="phone" placeholder="Mobile Number Should be 10 Digits" pattern="[0-9]{10}" required>
+            <input type="tel" id="phone" name="phone" placeholder="Mobile Number Should be 10 Digits" required>
 
             <!-- <button type="submit">REGISTER</button> -->
              <input type="submit" name = "submit" value="submit" class="btn"> </input>
@@ -37,7 +37,9 @@
     </div>
 </body>
 </html>
+
 <!-- ================================================ PHP CODE FOR FETCH DATABASE & Validations ============================================== -->
+
 <?php 
 require_once('db.php'); // Include database connection
 
@@ -57,10 +59,6 @@ if(isset($_POST['submit']))
     $confirmPassword = trim($_POST['confirmPassword']);
     $phone = trim($_POST['phone']);
 
-    if(empty($username) || empty($email) || empty($password) || empty($confirmPassword) || empty($phone)) {
-        die("All fields are required!");
-    }
-
     if ($password !== $confirmPassword) {
         die("Passwords do not match!");
     }
@@ -69,18 +67,16 @@ if(isset($_POST['submit']))
         die("Invalid email format!");
     }
 
-    if (strlen($password) < 3) {
-        die("Password must be at least 3 characters long and include an uppercase letter & a number.");
-    }
-
-
-    // if(strlen($phone) < 10 && strlen($phone) > 10) {  
-    //     $ErrMsg = "Mobile must have 10 digits."."<br>";  
-    //     echo $ErrMsg;  
+    // if (strlen($password) < 3) {
+    //     die("Password must be at least 3 characters long and include an uppercase letter & a number.");
     // }
+
+    if (!preg_match('/^(?=.*[A-Z])(?=.*[\W_]).{5,}$/', $password)) {
+        echo "Password must be at least 5 characters long, contain at least one uppercase letter, and one special character <br>";
+    } else {
+        echo "<br> Password is valid! <br>";
+    }
      
-
-
     // password_hash() function is used to encrypt the password it means it  
     $hashed_password = password_hash($password, PASSWORD_BCRYPT); //BCRYPT is secure hashing method 
     $hashed_cpass = password_hash($confirmPassword, PASSWORD_BCRYPT);
@@ -107,7 +103,7 @@ if(isset($_POST['submit']))
     $stmtinsert->bind_param("ssssss", $folder, $username, $email, $hashed_password, $hashed_cpass, $phone);    // bind_param() : bind_param() is a function in PHP used with MySQLi prepared statements
                                                                                        // to bind actual values to placeholders (?) in an SQL query
     if ($stmtinsert->execute()) {
-        echo "Successfully registered!";
+        echo "<br> Successfully registered! <br>";
         header("Location: login.php"); // Redirect to login page
         exit();
     } else {
