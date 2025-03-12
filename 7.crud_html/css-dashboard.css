@@ -1,18 +1,16 @@
 body{ 
-        margin: 0;
-        padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 table {
     border: 1px solid black;
-    margin-top: 0;
-    padding-top: 0;
 }  
+
 th{
    
     border: 1px solid black;
     text-align: center;
-   
 }
 
 td{
@@ -29,41 +27,43 @@ tr
 .del
 {
     background-color: red;
-}    
+}  
+
 a:link
 {
     text-decoration: none;
-    
 }    
 
 
 button {
     background-color: #28a745;
-    color: rgb(255, 255, 255);
     padding: 8px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    color: rgb(255, 255, 255);
     margin-top: 10px;
-}    
-
-/* Login Button */
-button[type="button"] {
+    }    
+    
+    /* Login Button */
+button[type="button"] 
+{
     background-color: #007bff;
 }    
-
-button[type="button"]:hover {
+    
+button[type="button"]:hover 
+{
     background-color: #0056b3;
 }  
-
-.btn {
+    
+.btn 
+{
     background-color: #28a745;
     color: white;
-    padding: 10px;
+    padding: 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
-    
+    margin-top: 10px; 
 }
 

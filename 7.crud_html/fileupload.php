@@ -15,7 +15,7 @@ error_reporting(0);
       <form action="" method="POST" enctype = "multipart/form-data">
       File : <input type="file" name="upload_file" id="">
       <br><br>
-             <input type="submit" name="submit" value="Upload" id="">
+        <input type="submit" name="submit" value="Upload" id="">
       </form>
 </body>
 </html>
@@ -23,14 +23,12 @@ error_reporting(0);
 
 <?php 
 
-    // $folder = "/images";
    $filename =  $_FILES["upload_file"]["name"];
    $temp_name = $_FILES["upload_file"]["tmp_name"];
 
    $folder = "images/".$filename;
-//    echo $folder;
 
-move_uploaded_file($temp_name, $folder);
-echo "<img src='$folder' height='100px' width='100px'>";
+    move_uploaded_file($temp_name, $folder);
+    echo "<img src='$folder' height='100px' width='100px'>";
 
 ?>

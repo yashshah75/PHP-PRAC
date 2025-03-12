@@ -1,10 +1,12 @@
 <?php 
-    session_start();
     include('db.php');
+    session_start();
 
     echo "<br> <center>";
     echo "Welcome ".$_SESSION['user_name'];
     echo "</center>";
+            
+   
 ?>
 
 <link rel="stylesheet" href="css-dashboard.css">
@@ -23,6 +25,7 @@
     }
 
     $query = "SELECT * FROM register";
+    
     $data = mysqli_query($conn, $query);
 
     $total = mysqli_num_rows($data); //it will presents how many number of rows are present in the table
@@ -38,20 +41,22 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>INDEX</title>
+
+            
         </head>
         <body>
-    
-        <table>
-                <th class="heading" colspan="8">All The Records</th>
+            
+        <table style="background-color: lightblue;">
+                <th class="heading" colspan="8" style="height: 50px;">All The Records</th>
                 <tr>
-                    <th> ID</th>
-                    <th> User_image</th>
-                    <th width="20%"> USER NAME</th>
-                    <th> EMAIL</th>
-                    <th> PASSWORD</th>
-                    <th> CONFIRM PASSWORD</th>
-                    <th width="50%"> MOBILE</th>
-                    <th width="100%"> ACTIONS </th>
+                    <th width="10%"> ID</th>
+                    <th width="10%"> User_image</th>
+                    <th width="5%"> USER NAME</th>
+                    <th width="5%"> EMAIL</th>
+                    <th width="8%"> PASSWORD</th>
+                    <th width="8%"> CONFIRM PASSWORD</th>
+                    <th width="10%"> MOBILE</th>
+                    <th width="34%"> ACTIONS </th>
                 </tr>
               
                 <?php
@@ -61,7 +66,7 @@
         {
             echo "<tr>
             <td>".$result['id']."</td>
-            <td><img src = '".$result['User_image']."' height='50px' width='50px'></td>
+            <td><img src = '".$result['User_image']."' height='50px' width='50px' alt='image'></td>
             <td>".$result['username']."</td>
             <td>".$result['email']."</td>
             <td>".$result['password']."</td>
@@ -84,9 +89,11 @@
 
     </table>
 
-    <a href="login.php">
-        <input type="submit" value="logout" name="logout" class="btn" style="cursor:pointer">
-    </a>
+    <center>
+            <a href="login.php">
+                <input type="submit" value="logout" name="logout" class="btn" style="cursor:pointer">
+            </a>
+            <center>
 
 </body>
 </html>
