@@ -1,3 +1,93 @@
+<?php
+
+session_start();
+include("db.php");
+
+
+require 'vendor/autoload.php'; // If installed via Composer
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+// OR include manually
+// require 'src/PHPMailer.php';
+// require 'src/SMTP.php';
+// require 'src/Exception.php';
+
+
+if (isset($_POST['pwd_reset'])) {
+    $email = $_POST['email'];
+
+    // Check if email exists
+    $query = "SELECT * FROM register WHERE email = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_execute($stmt);
+
+// Debugging check
+if (mysqli_stmt_affected_rows($stmt) > 0) {
+    echo "Token stored successfully.";
+} else {
+    echo "Error: Token not stored!";
+}
+    
+$result = mysqli_stmt_get_result($stmt);
+    
+    if ($row = mysqli_fetch_assoc($result)) {
+        // Generate a unique token
+        $token = bin2hex(random_bytes(50));
+
+        // Store token in the database
+        $updateQuery = "UPDATE register SET reset_token=? WHERE email=?";  
+        $stmt = mysqli_prepare($conn, $updateQuery);
+        
+        if (!$stmt) {
+            die("Update query preparation failed: " . mysqli_error($conn));
+        }
+          
+       // $stmt = mysqli_prepare($conn, $updateQuery);
+        mysqli_stmt_bind_param($stmt, "ss", $token, $email);
+        mysqli_stmt_execute($stmt);
+
+
+        // Send reset link to user's email
+        $reset_link = "http://localhost/reset_password.php?token=$token";
+
+
+
+
+        $mail = new PHPMailer(true);
+        try {
+            // Server settings
+            $mail->isSMTP();                                  
+            $mail->Host = 'smtp.gmail.com';  
+            $mail->SMTPAuth = true;                       
+            $mail->Username = 'yashphp.aorc@gmail.com';    
+            $mail->Password = 'lzsfzuncktimswwm';      
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;                           
+
+            // Recipients
+            $mail->setfrom('yashphp.aorc@gmail.com', 'PHPmailer');
+            $mail->addAddress($email);                  
+
+            // Content
+            $mail->isHTML(true);                         
+            $mail->Subject = 'Password Reset Request';
+            $mail->Body    = "Click the link below to reset your password: <a href='$reset_link'>$reset_link</a>";
+
+            // Send the email
+            $mail->send();
+            echo "Password reset link has been sent to your email.";
+        } catch (Exception $e) {
+            echo "Failed to send email. Mailer Error: {$mail->ErrorInfo}";
+        }
+    } else {
+        echo "Email not found!";
+    }
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,20 +109,3 @@
 </body>
 </html>
 
-
-
-<?php 
-    $email = $_POST['email'];
-
-    $token = bin2hex(random_bytes(16));
-
-    $token_hash =  hash("sha256", $token);
-
-    $expiry = date("Y-m-d H:i:s", time() + 60 * 30);
-
-    $include = include('db.php');
-
-    $sql = "UPDATE"
-
-
-?>
