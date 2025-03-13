@@ -10,7 +10,7 @@
 <body>
     <div class="form-container">
         <h2>Register</h2>
-        <form method="POST" action="register.php" enctype = "multipart/form-data">     
+        <form method="POST" action="" enctype = "multipart/form-data">     
 
             <label for="File">Your Photo:</label>
             <input type="file" name="upload_file" id="" required>
@@ -22,8 +22,10 @@
             <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" required>
-
+            <input type="password" id="password" name="password" placeholder="Password must be at least 5 characters long" required>
+            <span class="span"> Password should be in this format: Abc@123</span>
+            <span class="span"> Password must be at least 5 characters long</span>
+            
             <label for="confirmPassword">Confirm Password:</label>
             <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" required>
 
@@ -63,18 +65,35 @@ if(isset($_POST['submit']))
         die("Passwords do not match!");
     }
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        die("Invalid email format!");
+    if (!preg_match('/^(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{5,}$/', $password)) {
+            
+        die("Password is not in correct format");
     }
+    
+    // if (!preg_match('/^(?=.*[A-Z])(?=.*\d)(?=(?:.*[\W_]){1})(?!.*[\W_]{2,}).{5,}$/', $password)) {
+    //     echo "Password must be at least 5 characters long, contain at least one uppercase letter, one number, and one special character. <br>";
+    // } 
+
+
+    // if (strlen($password) < 3) {
+    //     echo "Password must be at least 5 characters long.<br>";
+    // }
+    // if (!preg_match('/[A-Z]/', $password)) {
+    //     echo "Password must contain at least one uppercase letter.<br>";
+    // }
+    // if (!preg_match('/\d/', $password)) {
+    //     echo "Password must contain at least one number.<br>";
+    // }
+    // if (!preg_match('/[\W_]/', $password)) {
+    //     echo "Password must contain at least one special character.<br>";
+    // }
 
     // if (strlen($password) < 3) {
     //     die("Password must be at least 3 characters long and include an uppercase letter & a number.");
     // }
 
-    if (!preg_match('/^(?=.*[A-Z])(?=.*[\W_]).{5,}$/', $password)) {
-        echo "Password must be at least 5 characters long, contain at least one uppercase letter, and one special character <br>";
-    } else {
-        echo "<br> Password is valid! <br>";
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        die("Invalid email format!");
     }
      
     // password_hash() function is used to encrypt the password it means it  
@@ -103,7 +122,6 @@ if(isset($_POST['submit']))
     $stmtinsert->bind_param("ssssss", $folder, $username, $email, $hashed_password, $hashed_cpass, $phone);    // bind_param() : bind_param() is a function in PHP used with MySQLi prepared statements
                                                                                        // to bind actual values to placeholders (?) in an SQL query
     if ($stmtinsert->execute()) {
-        echo "<br> Successfully registered! <br>";
         header("Location: login.php"); // Redirect to login page
         exit();
     } else {

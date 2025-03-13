@@ -48,11 +48,13 @@
             <label for="username">Username:</label>
             <input type="text" value= "<?php echo $result['username']; ?>" id="username" name="username">
 
-            <label for="email">Email Address:</label>
+            <label for="email"> Email Address:</label>
             <input type="email" value= "<?php echo $result['email']; ?>" id="email" name="email">
 
             <label for="password">Password:</label>
-            <input type="text" value= "<?php echo $result['password']; ?>"  id="password" name="password"  >
+            <input type="text" value= "<?php echo $result['password']; ?>"  id="password" name="password" placeholder="Password must be at least 5 characters long" >
+            <span class="span"> Password should be in this format: Abc@123</span>
+            <span class="span"> Password must be at least 5 characters long</span>
 
             <label for="confirmPassword">Confirm Password:</label>
             <input type="text" name= "confirmPassword" value= "<?php echo $result['confirmPassword']; ?>"  id="confirmPassword">
@@ -97,14 +99,16 @@
         if ($password !== $confirmPassword) {
             die("Passwords do not match!");
         }
-    
+
+        if (!preg_match('/^(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{5,}$/', $password)) {
+            
+            die("Password is not in correct format");
+        }
+
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             die("Invalid email format!");
         }
     
-        if (strlen($password) < 3) {
-            die("Password must be at least 3 characters long and include an uppercase letter & a number.");
-        }
         // Password will be encrypted by using 
         $hashed_password = password_hash($password, PASSWORD_BCRYPT); //BCRYPT is secure hashing method 
         $hashed_cpass = password_hash($confirmPassword, PASSWORD_BCRYPT);
