@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="reg-style.css">
 </head>
 <body>
-    <div class="form-container">
+    <div class="form-container">                                                                                 
         <h2>Register</h2>
         <form method="POST" action="" enctype = "multipart/form-data">     
 
@@ -35,6 +35,8 @@
             <!-- <button type="submit">REGISTER</button> -->
              <input type="submit" name = "submit" value="submit" class="btn"> </input>
             <!-- <button type="button" onclick="window.location.href='login.php'">LOG IN</button> -->
+
+            
         </form>
     </div>
 </body>
