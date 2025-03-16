@@ -56,7 +56,7 @@
                     <th width="8%"> PASSWORD</th>
                     <th width="8%"> CONFIRM PASSWORD</th>
                     <th width="10%"> MOBILE</th>
-                    <th width="34%"> ACTIONS </th>
+                    <th width="44%"> ACTIONS </th>
                 </tr>
               
                 <?php

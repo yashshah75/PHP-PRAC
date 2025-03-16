@@ -1,7 +1,7 @@
-body{ 
+/* body{ 
     margin: 0;
     padding: 0;
-}
+} */
 
 table {
     border: 1px solid black;
@@ -27,6 +27,11 @@ tr
 .del
 {
     background-color: red;
+} 
+
+.del:hover
+{
+    background-color:rgb(173, 23, 23);
 }  
 
 a:link
@@ -43,27 +48,40 @@ button {
     cursor: pointer;
     color: rgb(255, 255, 255);
     margin-top: 10px;
-    }    
+    }  
+    
+    button:hover {
+        background-color: #0e8329d1;
+        padding: 8px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        color: rgb(255, 255, 255);
+        margin-top: 10px;
+        }  
     
     /* Login Button */
-button[type="button"] 
+/* button[type="button"] 
 {
     background-color: #007bff;
 }    
-    
+
 button[type="button"]:hover 
 {
     background-color: #0056b3;
 }  
-    
+     */
 .btn 
 {
     background-color: #28a745;
     color: white;
     padding: 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     margin-top: 10px; 
+    margin-bottom: 25px;
+    
+  
 }
 

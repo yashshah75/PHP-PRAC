@@ -2,16 +2,17 @@
 session_start();
 include("db.php");
 
-if (!isset($_GET['token'])) {
-    die("Invalid or missing token!");
-}
 
-$token = $_GET['token'];
+
+// $token = $_GET['token'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_password = $_POST['password'];
     $confirm_password = $_POST['confirmPassword'];
+    $token = $_GET['token'];
 
-    // $token = $_GET['token'];
+    if (!isset($_GET['token'])) {
+        die("Invalid or missing token!");
+    }
 
     // Basic validation
     if ($new_password !== $confirm_password) {
@@ -19,26 +20,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif (strlen($new_password) < 3) {
         echo "<p style='color:red;'> Password must be at least 5 characters long.</p>";
     } else {
+        
         // Encrypt the new password
-        // $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);
-
-        // Update in the database
+        $hashedpassword = password_hash($new_password, PASSWORD_BCRYPT);
+        $hashed_cpassword = password_hash($hashed_cpassword, PASSWORD_BCRYPT);
+        
         $query = "UPDATE register SET password=?, confirmPassword=?, reset_token=NULL WHERE reset_token=?";
         $stmt = mysqli_prepare($conn, $query);
+       
         if (!$stmt)
-         {
-                die("Query preparation failed: " . mysqli_error($conn));
+        {
+            die("Query preparation failed: " . mysqli_error($conn));
         }
-        mysqli_stmt_bind_param($stmt, "sss", $new_password, $confirm_password, $token);
-
-        // $query = "UPDATE alldata SET pswd=?, reset_token=NULL WHERE reset_token=?";
-        // $stmt = mysqli_prepare($conn, $query);
-
-        // if (!$stmt) {
-        //     die("Query preparation failed: " . mysqli_error($conn));
-        // }
-        // mysqli_stmt_bind_param($stmt, "ss", $hashed_password, $token);
-        mysqli_stmt_execute($stmt);
+             mysqli_stmt_bind_param($stmt, "sss", $hashedpassword , $hashed_cpassword , $token);
+             mysqli_stmt_execute($stmt);
 
         if (mysqli_stmt_affected_rows($stmt) > 0) {
             // Redirect to login page with a success flag

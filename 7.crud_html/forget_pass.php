@@ -3,7 +3,9 @@
 session_start();
 include("db.php");
 
-
+// require 'src/PHPMailer.php';
+// require 'src/SMTP.php';
+// require 'src/Exception.php';
 require 'vendor/autoload.php'; // If installed via Composer
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -21,41 +23,33 @@ if (isset($_POST['pwd_reset'])) {
     $stmt = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($stmt, "s", $email);
     mysqli_stmt_execute($stmt);
-
-// Debugging check
-if (mysqli_stmt_affected_rows($stmt) > 0) {
-    echo "Token stored successfully.";
-} else {
-    echo "Error: Token not stored!";
-}
+    $result = mysqli_stmt_get_result($stmt);
     
-$result = mysqli_stmt_get_result($stmt);
     
-    if ($row = mysqli_fetch_assoc($result)) {
+    if ($row = mysqli_fetch_assoc($result)) 
+    {
         // Generate a unique token
-        $token = bin2hex(random_bytes(50));
+         $token = bin2hex(random_bytes(20));
 
         // Store token in the database
         $updateQuery = "UPDATE register SET reset_token=? WHERE email=?";  
         $stmt = mysqli_prepare($conn, $updateQuery);
         
-        if (!$stmt) {
+        if (!$stmt) 
             die("Update query preparation failed: " . mysqli_error($conn));
+        {
         }
           
        // $stmt = mysqli_prepare($conn, $updateQuery);
         mysqli_stmt_bind_param($stmt, "ss", $token, $email);
         mysqli_stmt_execute($stmt);
 
-
         // Send reset link to user's email
-        $reset_link = "http://localhost/reset_password.php?token=$token";
-
-
-
+        $reset_link = "http://localhost/1. AORC TECHNOLOGIES/PRACTICE/7.crud_html/reset_password.php?token=$token";
 
         $mail = new PHPMailer(true);
-        try {
+        try 
+        {
             // Server settings
             $mail->isSMTP();                                  
             $mail->Host = 'smtp.gmail.com';  
@@ -66,7 +60,7 @@ $result = mysqli_stmt_get_result($stmt);
             $mail->Port = 587;                           
 
             // Recipients
-            $mail->setfrom('yashphp.aorc@gmail.com', 'PHPmailer');
+            $mail->setFrom('yashphp.aorc@gmail.com', 'PHPmailer');
             $mail->addAddress($email);                  
 
             // Content
@@ -77,10 +71,14 @@ $result = mysqli_stmt_get_result($stmt);
             // Send the email
             $mail->send();
             echo "Password reset link has been sent to your email.";
-        } catch (Exception $e) {
+        } 
+        catch (Exception $e) 
+        {
             echo "Failed to send email. Mailer Error: {$mail->ErrorInfo}";
         }
-    } else {
+    } 
+    else 
+    {
         echo "Email not found!";
     }
 }
@@ -99,12 +97,13 @@ $result = mysqli_stmt_get_result($stmt);
 <body>
     <div class="container">
         <h2>Forgot Password</h2>
-        <p>Enter your email to reset your password</p>
-        <form action="#" method="POST">
-            <input type="email" name="email" placeholder="&nbsp;Enter your email" required>
-            <button type="submit" name="pwd_reset">Reset Password</button>
-        </form>
-        <a href="login.php" class="back">Back to Login</a>
+            <p>Enter your email to reset your password</p>
+            <form action="#" method="POST">
+                <input type="email" name="email" placeholder="&nbsp;Enter your email" required>
+                <button type="submit" name="pwd_reset">Reset Password</button>
+            </form>
+            
+            <a href="login.php" class="back">Back to Login</a>
     </div>
 </body>
 </html>
