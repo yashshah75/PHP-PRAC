@@ -1,47 +1,3 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" href="reg-style.css">
-</head>
-<body>
-    <div class="form-container">                                                                                 
-        <h2>Register</h2>
-        <form method="POST" action="" enctype = "multipart/form-data">     
-
-            <label for="File">Your Photo:</label>
-            <input type="file" name="upload_file" id="" required>
-
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" placeholder="Enter your full name" required>
-
-            <label for="email">Email Address:</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Password must be at least 5 characters long" required>
-            <span class="span"> Password should be in this format: Abc@123</span>
-            <span class="span"> Password must be at least 5 characters long</span>
-            
-            <label for="confirmPassword">Confirm Password:</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" required>
-
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" name="phone" placeholder="Mobile Number Should be 10 Digits" required>
-
-            <!-- <button type="submit">REGISTER</button> -->
-             <input type="submit" name = "submit" value="submit" class="btn"> </input>
-            <!-- <button type="button" onclick="window.location.href='login.php'">LOG IN</button> -->
-
-            
-        </form>
-    </div>
-</body>
-</html>
-
 <!-- ================================================ PHP CODE FOR FETCH DATABASE & Validations ============================================== -->
 
 <?php 
@@ -136,3 +92,49 @@ if(isset($_POST['submit']))
     $conn->close(); // closing the database
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="reg-style.css">
+</head>
+<body>
+    <div class="form-container">                                                                                 
+        <h2>Register</h2>
+        <form method="POST" action="" enctype = "multipart/form-data">     
+
+            <label for="File">Your Photo:</label>
+            <input type="file" name="upload_file" id="" required>
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your full name" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Password must be at least 5 characters long" required>
+            <span class="span"> Password should be in this format: Abc@123</span>
+            <span class="span"> Password must be at least 5 characters long</span>
+            
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Mobile Number Should be 10 Digits" required>
+
+            <!-- <button type="submit">REGISTER</button> -->
+             <input type="submit" name = "submit" value="submit" class="btn"> </input>
+
+             already have an account ? <a href="login.php" style="border-decoration:none">login</a>
+            <!-- <button type="button" onclick="window.location.href='login.php'">LOG IN</button> -->
+
+            
+        </form>
+    </div>
+</body>
+</html>
+
