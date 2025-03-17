@@ -9,7 +9,7 @@ include("db.php");
 require 'vendor/autoload.php'; // If installed via Composer
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-// OR include manually
+// OR include   manually
 // require 'src/PHPMailer.php';
 // require 'src/SMTP.php';
 // require 'src/Exception.php';
@@ -25,7 +25,6 @@ if (isset($_POST['pwd_reset'])) {
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     
-    hello yash shah
     if ($row = mysqli_fetch_assoc($result)) 
     {
         // Generate a unique token
