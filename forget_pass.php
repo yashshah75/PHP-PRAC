@@ -3,14 +3,12 @@
 session_start();
 include("db.php");
 
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
-require 'PHPMailer/src/Exception.php';
-
+// require 'src/PHPMailer.php';
+// require 'src/SMTP.php';
+// require 'src/Exception.php';
+require 'vendor/autoload.php'; // If installed via Composer
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
-
 // OR include manually
 // require 'src/PHPMailer.php';
 // require 'src/SMTP.php';
@@ -86,7 +84,7 @@ if (isset($_POST['pwd_reset'])) {
 }
 ?>
 
-hello
+
 
 <!DOCTYPE html>
 <html lang="en">
