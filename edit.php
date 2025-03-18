@@ -51,14 +51,6 @@
             <label for="email"> Email Address:</label>
             <input type="email" value= "<?php echo $result['email']; ?>" id="email" name="email">
 
-            <!-- <label for="password">Password:</label>
-            <input type="text" value= "<?php echo $result['password']; ?>"  id="password" name="password" placeholder="Password must be at least 5 characters long" >
-            <span class="span"> Password should be in this format: Abc@123</span>
-            <span class="span"> Password must be at least 5 characters long</span>
-
-            <label for="confirmPassword">Confirm Password:</label>
-            <input type="text" name= "confirmPassword" value= "<?php echo $result['confirmPassword']; ?>"  id="confirmPassword"> -->
-
             <label for="phone">Phone Number:</label>
             <input type="tel" value= "<?php echo $result['phone']; ?>" id="phone" name="phone" placeholder="1234567890" pattern="[0-9]{10}" >
 
