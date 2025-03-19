@@ -1,98 +1,3 @@
-<!-- ================================================ PHP CODE FOR FETCH DATABASE & Validations ============================================== -->
-
-<?php 
-require_once('db.php'); // Include database connection
-
-if(isset($_POST['submit']))
-{
-    
-    //for upload the file
-
-    $filename =  $_FILES["upload_file"]["name"];
-    $temp_name = $_FILES["upload_file"]["tmp_name"];
-    $folder = "images/".$filename;
-    move_uploaded_file($temp_name, $folder);
-
-    $username = trim($_POST['username']);
-    $email = trim($_POST['email']);
-    $password = trim($_POST['password']);
-    $confirmPassword = trim($_POST['confirmPassword']);
-    $phone = trim($_POST['phone']);
-
-    if ($password !== $confirmPassword) {
-        die("Passwords do not match!");
-    }
-
-    if (!preg_match('/^(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{5,}$/', $password)) {
-            
-        die("Password is not in correct format");
-    }
-    
-    // if (!preg_match('/^(?=.*[A-Z])(?=.*\d)(?=(?:.*[\W_]){1})(?!.*[\W_]{2,}).{5,}$/', $password)) {
-    //     echo "Password must be at least 5 characters long, contain at least one uppercase letter, one number, and one special character. <br>";
-    // } 
-
-
-    // if (strlen($password) < 3) {
-    //     echo "Password must be at least 5 characters long.<br>";
-    // }
-    // if (!preg_match('/[A-Z]/', $password)) {
-    //     echo "Password must contain at least one uppercase letter.<br>";
-    // }
-    // if (!preg_match('/\d/', $password)) {
-    //     echo "Password must contain at least one number.<br>";
-    // }
-    // if (!preg_match('/[\W_]/', $password)) {
-    //     echo "Password must contain at least one special character.<br>";
-    // }
-
-    // if (strlen($password) < 3) {
-    //     die("Password must be at least 3 characters long and include an uppercase letter & a number.");
-    // }
-
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        die("Invalid email format!");
-    }
-     
-    // password_hash() function is used to encrypt the password it means it  
-    $hashed_password = password_hash($password, PASSWORD_BCRYPT); //BCRYPT is secure hashing method 
-    $hashed_cpass = password_hash($confirmPassword, PASSWORD_BCRYPT);
-    // Check if email already exists
-    $check_email = "SELECT * FROM register WHERE email = ?";
-    
-    $stmt = $conn->prepare($check_email); // The prepare() function is used to create a SQL statement template before executing it.
-                                          // This helps prevent SQL injection attacks.
-                                          // It allows binding of parameters dynamically, making queries more efficient and secure.
-    
-    $stmt->bind_param("s", $email); //bind_param
-    $stmt->execute();
-    $stmt->store_result();                                   
-
-    if ($stmt->num_rows > 0) {
-        die("Email already registered!");
-    }
-    $stmt->close();
-
-    // Insert user into the database
-    $sql = "INSERT INTO register (User_image, username, email, password, confirmPassword, phone) VALUES (?,?, ?, ?, ?, ?)";
-    $stmtinsert = $conn->prepare($sql);
-
-    $stmtinsert->bind_param("ssssss", $folder, $username, $email, $hashed_password, $hashed_cpass, $phone);    // bind_param() : bind_param() is a function in PHP used with MySQLi prepared statements
-    
-    // to bind actual values to placeholders (?) in an SQL query
-    
-    if ($stmtinsert->execute()) {
-        header("Location: login.php"); // Redirect to login page
-        exit();
-    } else {
-        echo "Error: " . $conn->error;
-    }
-
-    $stmtinsert->close(); //closing the statement after the execution
-    $conn->close(); // closing the database
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,7 +12,9 @@ if(isset($_POST['submit']))
         <form method="POST" action="" enctype = "multipart/form-data">     
 
             <label for="File">Your Photo:</label>
-            <input type="file" name="upload_file" id="" required>
+            <!-- <input type="file" name="upload_file" id="" required> -->
+            <input type="file" id="imageInput" name="upload_file" accept=".jpg, .jpeg, .png" required>
+            <span class="span"> Only JPG, JPEG, and PNG files are allowed</span>
 
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" placeholder="Enter your full name" required>
@@ -137,4 +44,131 @@ if(isset($_POST['submit']))
     </div>
 </body>
 </html>
+
+<!-- ================================================ PHP CODE FOR FETCH DATABASE & Validations ============================================== -->
+
+<?php 
+require_once('db.php'); // Include database connection
+
+if(isset($_POST['submit']))
+{
+    
+    $allowed_extensions = ['jpg', 'jpeg', 'png'];
+
+    // Get the file name and extension
+    $filename = $_FILES["upload_file"]["name"];
+    $temp_name = $_FILES["upload_file"]["tmp_name"];
+    $file_ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION)); // Extract extension
+
+    // Validate file extension
+    if (!in_array($file_ext, $allowed_extensions)) {
+        echo "<p style='color:red;'>Only JPG, JPEG, and PNG files are allowed.</p>";
+    } else {
+        // Move the file if valid
+        $folder = "images/" . $filename;
+        if (!move_uploaded_file($temp_name, $folder)) {
+            echo "<p style='color:red;'>File upload failed!</p>";  
+        }
+    }
+    //for upload the file
+
+    // $filename =  $_FILES["upload_file"]["name"];
+    // $temp_name = $_FILES["upload_file"]["tmp_name"];
+    $folder = "images/".$filename;
+    move_uploaded_file($temp_name, $folder);
+
+    $username = trim($_POST['username']);
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
+    $confirmPassword = trim($_POST['confirmPassword']);
+    $phone = trim($_POST['phone']);
+    
+
+    if ($password !== $confirmPassword) {
+        die("Passwords do not match!");
+    }    
+
+    if (!preg_match('/^(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{5,}$/', $password)) {
+            
+        die("Password is not in correct format");
+    }    
+    
+    // if (!preg_match('/^(?=.*[A-Z])(?=.*\d)(?=(?:.*[\W_]){1})(?!.*[\W_]{2,}).{5,}$/', $password)) {
+    //     echo "Password must be at least 5 characters long, contain at least one uppercase letter, one number, and one special character. <br>";    
+    // } 
+
+
+    // if (strlen($password) < 3) {
+    //     echo "Password must be at least 5 characters long.<br>";    
+    // }
+    // if (!preg_match('/[A-Z]/', $password)) {
+    //     echo "Password must contain at least one uppercase letter.<br>";    
+    // }
+    // if (!preg_match('/\d/', $password)) {
+    //     echo "Password must contain at least one number.<br>";    
+    // }
+    // if (!preg_match('/[\W_]/', $password)) {
+    //     echo "Password must contain at least one special character.<br>";    
+    // }
+
+    // if (strlen($password) < 3) {
+    //     die("Password must be at least 3 characters long and include an uppercase letter & a number.");    
+    // }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        die("Invalid email format!");
+    }    
+     
+    // password_hash() function is used to encrypt the password it means it  
+    $hashed_password = password_hash($password, PASSWORD_BCRYPT); //BCRYPT is secure hashing method 
+    $hashed_cpass = password_hash($confirmPassword, PASSWORD_BCRYPT);
+    
+    // Check if email already exists
+    $check_email = "SELECT * FROM register WHERE email = ?";
+    
+    $stmt = $conn->prepare($check_email); // The prepare() function is used to create a SQL statement template before executing it.
+                                          // This helps prevent SQL injection attacks.
+                                          // It allows binding of parameters dynamically, making queries more efficient and secure.
+    
+    $stmt->bind_param("s", $email); //bind_param                                      
+    $stmt->execute();
+    $stmt->store_result();                                   
+
+    if ($stmt->num_rows > 0) {
+        die("Email already registered!");
+    }    
+    $stmt->close();
+
+
+    $check_username = "SELECT * FROM register WHERE username = ?";
+
+    $stmt = $conn->prepare($check_username);
+    $stmt->bind_param("s",$username);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows > 0) {
+        die("Username already registered!");
+    }    
+    $stmt->close();
+
+    // Insert user into the database
+    $sql = "INSERT INTO register (User_image, username, email, password, confirmPassword, phone) VALUES (?,?, ?, ?, ?, ?)";
+    $stmtinsert = $conn->prepare($sql);
+
+    $stmtinsert->bind_param("ssssss", $folder, $username, $email, $hashed_password, $hashed_cpass, $phone);    // bind_param() : bind_param() is a function in PHP used with MySQLi prepared statements
+    
+    // to bind actual values to placeholders (?) in an SQL query
+    
+    if ($stmtinsert->execute()) {
+        header("Location: login.php"); // Redirect to login page
+        exit();
+    } else {
+        echo "Error: " . $conn->error;
+    }
+
+    $stmtinsert->close(); //closing the statement after the execution
+    $conn->close(); // closing the database
+}    
+?>
 
