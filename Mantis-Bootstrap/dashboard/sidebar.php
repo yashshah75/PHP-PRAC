@@ -2,10 +2,13 @@
  <nav class="pc-sidebar">
   <div class="navbar-wrapper">
     <div class="m-header">
-      <a href="index.html" class="b-brand text-primary">
+      <a href="index.php" class="b-brand text-primary">
         <!-- ========   Change your logo from here   ============ -->
         <!-- <img src="http://localhostE:\xampp\htdocs\1. AORC TECHNOLOGIES\PRACTICE\7.crud_html\Mantis-Bootstrap\dashboard\assets\images\user\images.png" class="img-fluid logo-lg" alt="logo"> -->
-        <img src="../assets/images/user/images.png" class="img-fluid logo-lg" alt="logo">
+        <img src=" <?php echo '1.AORC TECHNOLOGIES/PRACTICE/7.crud_html/Mantis-Bootstrap/dashboard/images/user/avatar-1.jpg'; ?>" class="img-fluid logo-lg" alt="logo">
+
+
+
 
         <!-- ../assets/fonts/feather.css -->
       </a>
