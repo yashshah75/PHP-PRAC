@@ -16461,7 +16461,7 @@ pre[class*=language-] > code {
 @media (max-width: 575.98px) {
   .pc-header .header-wrapper {
     padding: 0 15px;
-  }
+  } 
 }
 .pc-header .header-search {
   position: relative;
