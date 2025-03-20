@@ -51,15 +51,18 @@
         </div>
         <div class="card my-5">
           <div class="card-body">
+            
+          
             <div class="d-flex justify-content-between align-items-end mb-4">
-              <h3 class="mb-0"><b>Sign up</b></h3>
-              <a href="login.php" class="link-primary">Already have an account?</a>
+              <h3 class="mb-0"><b>Update Profile</b></h3>
+              <!-- <a href="login.php" class="link-primary">Already have an account?</a> -->
             </div>
             <!-- <div class="row"> -->
+
               <div class="col-md-12">
                 <div class="form-group mb-3">
                   <label class="form-label">Username</label>
-                  <input type="text" class="form-control" placeholder="Enter Your Username">
+                  <input type="text" class="form-control" >
                 </div>
               </div>
             
@@ -71,59 +74,35 @@
             
             <div class="form-group mb-3">
               <label class="form-label">Email Address</label>
-              <input type="email" class="form-control" placeholder="Email Address">
+              <input type="email" class="form-control">
             </div>
             
-            <div class="form-group mb-3">
+            <!-- <div class="form-group mb-3">
               <label class="form-label">Password</label>
-              <input type="password" class="form-control" placeholder="Password">
+              <input type="password" class="form-control">
             </div>
 
             <div class="col-md-12">
                 <div class="form-group mb-3">
                   <label class="form-label">Confirm Password</label>
-                  <input type="text" class="form-control" placeholder="Enter Your Username">
+                  <input type="text" class="form-control" >
                 </div>
-              </div>
+              </div> -->
 
               <div class="col-md-12">
                 <div class="form-group mb-3">
                   <label class="form-label">Phone Number</label>
-                  <input type="text" class="form-control" placeholder="Enter Your Username">
+                  <input type="text" class="form-control">
                 </div>
               </div>
             <!-- <p class="mt-4 text-sm text-muted">By Signing up, you agree to our <a href="#" class="text-primary"> Terms of Service </a> and <a href="#" class="text-primary"> Privacy Policy</a></p> -->
             <div class="d-grid mt-3">
-              <button type="button" class="btn btn-primary">Create Account</button>
+              <a href="index.php"><button type="button" class="btn btn-primary">UPDATE</button></a><br>
+              <a href="index.php">Back</a>
             </div>
-            <!-- <div class="saprator mt-3">
-              <span>Sign up with</span>
-            </div> -->
-            <!-- <div class="row">
-              <div class="col-4">
-                <div class="d-grid">
-                  <button type="button" class="btn mt-2 btn-light-primary bg-light text-muted">
-                    <img src="https://themewagon.github.io/Mantis-Bootstrap/assets/images/authentication/google.svg" alt="img"> <span class="d-none d-sm-inline-block"> Google</span>
-                  </button>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="d-grid">
-                  <button type="button" class="btn mt-2 btn-light-primary bg-light text-muted">
-                    <img src="https://themewagon.github.io/Mantis-Bootstrap/assets/images/authentication/twitter.svg" alt="img"> <span class="d-none d-sm-inline-block"> Twitter</span>
-                  </button>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="d-grid">
-                  <button type="button" class="btn mt-2 btn-light-primary bg-light text-muted">
-                    <img src="https://themewagon.github.io/Mantis-Bootstrap/assets/images/authentication/facebook.svg" alt="img"> <span class="d-none d-sm-inline-block"> Facebook</span>
-                  </button>
-                </div>
-              </div>
-            </div> -->
+
             
-          </div>
+        </div>
         </div>
         <div class="auth-footer row">
           <!-- <div class=""> -->
@@ -132,7 +111,7 @@
             </div>
             <div class="col-auto my-1">
               <ul class="list-inline footer-link mb-0">
-                <li class="list-inline-item"><a href="#">Home</a></li>
+                <li class="list-inline-item"><a href="index.php">Home</a></li>
                 <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
                 <li class="list-inline-item"><a href="#">Contact us</a></li>
               </ul>

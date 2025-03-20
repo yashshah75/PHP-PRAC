@@ -84,7 +84,7 @@ include('header.php');
         <tr>
           <th >ID</th>
           <th>USER NAME</th>
-          <th>EmEMAILail</th>
+          <th>EMAIL</th>
           <th>PASSWORD</th>
           <th>CONFIRM_PASSWORD</th>
           <th>MOBILE</th>
@@ -101,8 +101,8 @@ include('header.php');
           <td>@mdo</td>
           <td>@mdo</td>
           <td>
-              <button type="button" class="btn btn-success">UPDATE</button> &nbsp;
-              <button type="button" class="btn btn-danger">DELETE</button>
+            <a href="update_profile.php"> <button type="button" class="btn btn-success">UPDATE </button> </a> &nbsp;
+            <button type="button" class="btn btn-danger">DELETE </button>
           </td>
         </tr>
       
@@ -114,8 +114,8 @@ include('header.php');
           <td>@mdo</td>
           <td>@mdo</td>
           <td>
-              <button type="button" class="btn btn-success">UPDATE</button> &nbsp;
-              <button type="button" class="btn btn-danger">DELETE</button>
+            <a href="update_profile.php"> <button type="button" class="btn btn-success">UPDATE </button> </a> &nbsp;
+            <button type="button" class="btn btn-danger">DELETE</button>
           </td>
         </tr>
       
@@ -127,7 +127,7 @@ include('header.php');
           <td>@mdo</td>
           <td>@mdo</td>
           <td>
-              <button type="button" class="btn btn-success">UPDATE</button> &nbsp;
+          <a href="update_profile.php"> <button type="button" class="btn btn-success">UPDATE </button> </a> &nbsp;
               <button type="button" class="btn btn-danger">DELETE</button>
           </td>
         </tr>

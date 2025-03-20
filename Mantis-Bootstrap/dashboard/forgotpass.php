@@ -52,52 +52,24 @@
         <div class="card my-5">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-end mb-4">
-              <h3 class="mb-0"><b>Login</b></h3>
+              <h3 class="mb-0"><b>Forgot Password</b></h3>
               <a href="register.php" class="link-primary">Don't have an account?</a>
             </div>
             <div class="form-group mb-3">
               <label class="form-label">Email Address</label>
               <input type="email" class="form-control" placeholder="Email Address">
             </div>
-            <div class="form-group mb-3">
+            <!-- <div class="form-group mb-3">
               <label class="form-label">Password</label>
               <input type="password" class="form-control" placeholder="Password">
-            </div>
-            <div class="d-flex mt-1 justify-content-between">
-				
-              <a href="forgotpass.php">Forgot Password?</a>
-            </div>
+            </div> -->
+            <!-- <div class="d-flex mt-1 justify-content-between">
+              <a href="forgot"><h5 class="text-secondary f-w-400">Forgot Password?</h5></a>
+            </div> -->
             <div class="d-grid mt-4">
-              <button type="button" class="btn btn-primary">Login</button>
+              <button type="button" class="btn btn-primary">SEND</button><br>
+              <a href="login.php">Back</a>
             </div>
-            
-			<!-- <div class="saprator mt-3">
-              <span>Login with</span>
-            </div> -->
-            <!-- <div class="row">
-              <div class="col-4">
-                <div class="d-grid">
-                  <button type="button" class="btn mt-2 btn-light-primary bg-light text-muted">
-                    <img src="https://themewagon.github.io/Mantis-Bootstrap/assets/images/authentication/google.svg" alt="img"> <span class="d-none d-sm-inline-block"> Google</span>
-                  </button>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="d-grid">
-                  <button type="button" class="btn mt-2 btn-light-primary bg-light text-muted">
-                    <img src="https://themewagon.github.io/Mantis-Bootstrap/assets/images/authentication/twitter.svg" alt="img"> <span class="d-none d-sm-inline-block"> Twitter</span>
-                  </button>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="d-grid">
-                  <button type="button" class="btn mt-2 btn-light-primary bg-light text-muted">
-                    <img src="https://themewagon.github.io/Mantis-Bootstrap/assets/images/authentication/facebook.svg" alt="img"> <span class="d-none d-sm-inline-block"> Facebook</span>
-                  </button>
-                </div>
-              </div>
-            </div> -->
-          
 			</div>
         </div>
         
@@ -109,8 +81,8 @@
             <div class="col-auto my-1">
               <ul class="list-inline footer-link mb-0">
                 <li class="list-inline-item"><a href="#">Home</a></li>
-                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-                <li class="list-inline-item"><a href="#">Contact us</a></li>
+                <!-- <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                <li class="list-inline-item"><a href="#">Contact us</a></li> -->
               </ul>
             </div>
           <!-- </div> -->
