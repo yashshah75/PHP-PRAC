@@ -59,7 +59,7 @@
                     <th width="44%"> ACTIONS </th>
                 </tr>
               
-                <?php
+<?php
         
         // echo "Table Has Records";
         while($result = mysqli_fetch_assoc($data))
