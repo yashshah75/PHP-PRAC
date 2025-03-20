@@ -1,0 +1,54 @@
+<?php
+include "db.php"; // Include database connection
+
+error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = trim($_POST['username']);
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
+    $confirmPassword = trim($_POST['confirmPassword']);
+    $phone = trim($_POST['phone']);
+
+    // Validate required fields
+    if (empty($username) || empty($email) || empty($password) || empty($confirmPassword) || empty($phone)) {
+        die("All fields are required!");
+    }
+
+    // Validate password confirmation
+    if ($password !== $confirmPassword) {
+        die("Passwords do not match!");
+    }
+
+    // Hash the password for security
+    $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+
+    // Check if email already exists
+    $check_email = "SELECT * FROM register WHERE email = ?";
+    $stmt = mysqli_prepare($conn, $check_email);
+    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_store_result($stmt);
+
+    if (mysqli_stmt_num_rows($stmt) > 0) {
+        die("Email already registered!");
+    }
+    mysqli_stmt_close($stmt);
+
+    // Insert new user
+    $sql = "INSERT INTO register (username, email, password, confirm_password, phone) VALUES (?, ?, ?, ?, ?)";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "ssss", $username, $email, $hashed_password, $phone);
+
+    if (mysqli_stmt_execute($stmt)) {
+        echo "Registration successful!";
+        header("Location: login.php"); // Redirect to login page
+        exit();
+    } else {
+        die("Error: " . mysqli_error($conn));
+    }
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
+}
+?>
