@@ -9,7 +9,7 @@
     if($conn)
     {
         // header('location:sidebar.php');
-        echo "Connected";
+        // echo "Connected";
     }
     else
     {

@@ -104,7 +104,7 @@ if(isset($_POST['submit']))
     // if (!preg_match('/[A-Z]/', $password)) {
     //     echo "Password must contain at least one uppercase letter.<br>";    
     // }
-    // if (!preg_match('/\d/', $password)) {
+    // if (!preg_match('/\d/', $password)) {    
     //     echo "Password must contain at least one number.<br>";    
     // }
     // if (!preg_match('/[\W_]/', $password)) {

@@ -6,7 +6,7 @@
     <div class="m-header">
       <a href="" class="b-brand text-primary">
         <!-- ========   Change your logo from here   ============ -->
-        <img src="<?php echo '/allfiles/Mantis-Bootstrap/Mantis-Bootstrap/dashboard/imagess/logooo.jpg'; ?>"  alt="logo"  style="width: 50px; height: 50px; display: block !important;">
+        <img src="images/1.jpg"  alt="logo"  style="width: 50px; height: 50px; display: block !important;">
         </a>
     </div>
     <div class="navbar-content">

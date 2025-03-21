@@ -83,6 +83,7 @@ include('header.php');
       <thead>
         <tr>
           <th >ID</th>
+          <th >IMAGE</th>
           <th>USER NAME</th>
           <th>EMAIL</th>
           <th>PASSWORD</th>
@@ -95,6 +96,7 @@ include('header.php');
        
         <tr>
           <th scope="row">1</th>
+          <td>Mark</td>
           <td>Mark</td>
           <td>Otto</td>
           <td>@mdo</td>
@@ -109,6 +111,7 @@ include('header.php');
         <tr>
           <th>2</th>
           <td>Jacob</td>
+          <td>Jacob</td>
           <td>Thornton</td>
           <td>@fat</td>
           <td>@mdo</td>
@@ -122,6 +125,7 @@ include('header.php');
         <tr>
           <th>3</th>
           <td>Larry the Bird</td>
+          <td>@twitter</td>
           <td>@twitter</td>
           <td>@fat</td>
           <td>@mdo</td>

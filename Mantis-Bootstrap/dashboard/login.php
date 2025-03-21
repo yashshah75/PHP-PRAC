@@ -68,7 +68,7 @@
               <a href="forgotpass.php">Forgot Password?</a>
             </div>
             <div class="d-grid mt-4">
-              <button type="button" class="btn btn-primary">Login</button>
+              <a href="index.php"><button type="button" class="btn btn-primary">Login</button></a>
             </div>
             
 			<!-- <div class="saprator mt-3">
