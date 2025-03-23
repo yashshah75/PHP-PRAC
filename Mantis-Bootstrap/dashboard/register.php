@@ -383,29 +383,29 @@
 
   if(isset($_POST['register']))
   {
-    // $allowed_extensions = ['jpg', 'jpeg', 'png'];
+    $allowed_extensions = ['jpg', 'jpeg', 'png'];
 
-    //   // Get the file name and extension
-    //   $filename = $_FILES["photo"]["name"];
-    //   $temp_name = $_FILES["photo"]["tmp_name"];
-    //   $file_ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION)); // Extract extension
+      // Get the file name and extension
+      $filename = $_FILES["photo"]["name"];
+      $temp_name = $_FILES["photo"]["tmp_name"];
+      $file_ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION)); // Extract extension
 
-    //   // Validate file extension
-    //   if (!in_array($file_ext, $allowed_extensions)) {
-    //       echo "<p style='color:red;'>Only JPG, JPEG, and PNG files are allowed.</p>";
-    //   } else {
-    //       // Move the file if valid
-    //       $folder = "images/" . $filename;
-    //       if (!move_uploaded_file($temp_name, $folder)) {
-    //           echo "<p style='color:red;'>File upload failed!</p>";  
-    //       }
-    //   }
-    //   //for upload the file
+      // Validate file extension
+      if (!in_array($file_ext, $allowed_extensions)) {
+          echo "<p style='color:red;'>Only JPG, JPEG, and PNG files are allowed.</p>";
+      } else {
+          // Move the file if valid
+          $folder = "images/" . $filename;
+          if (!move_uploaded_file($temp_name, $folder)) {
+              echo "<p style='color:red;'>File upload failed!</p>";  
+          }
+      }
+      //for upload the file
 
-    //   // $filename =  $_FILES["upload_file"]["name"];
-    //   // $temp_name = $_FILES["upload_file"]["tmp_name"];
-    //   $folder = "images/".$filename;
-    //   move_uploaded_file($temp_name, $folder);
+      // $filename =  $_FILES["upload_file"]["name"];
+      // $temp_name = $_FILES["upload_file"]["tmp_name"];
+      $folder = "images/".$filename;
+      move_uploaded_file($temp_name, $folder);
 
       $username = trim($_POST['username']);
       $email = trim($_POST['email']);
@@ -427,34 +427,6 @@
         die("Invalid email format!");
     }    
     
-    // $check_email = "SELECT * FROM register WHERE email = ?";
-    
-    // $stmt = $conn->prepare($check_email); // The prepare() function is used to create a SQL statement template before executing it.
-    //                                       // This helps prevent SQL injection attacks.
-    //                                       // It allows binding of parameters dynamically, making queries more efficient and secure.
-    
-    // $stmt->bind_param("s", $email); //bind_param                                      
-    // $stmt->execute();
-    // $stmt->store_result();                                   
-
-    // if ($stmt->num_rows > 0) {
-    //     die("Email already registered!");
-    // }    
-    // $stmt->close();
-
-
-
-    // $check_username = "SELECT * FROM register WHERE username = ?";
-
-    // $stmt = $conn->prepare($check_username);
-    // $stmt->bind_param("s",$username);
-    // $stmt->execute();
-    // $stmt->store_result();
-
-    // if ($stmt->num_rows > 0) {
-    //     die("Username already registered!");             
-    // }    
-    // $stmt->close();
 
     // Insert user into the database
     $sql = "INSERT INTO register (username, email, password, confirm_password, mobile) VALUES (?,?, ?, ?, ?)";
@@ -465,8 +437,9 @@
     // to bind actual values to placeholders (?) in an SQL query
     
     if ($stmtinsert->execute()) {
-        header("Location: login.php"); // Redirect to login page
-        exit;
+      echo "INSERTED";  
+      header("Location: login.php"); // Redirect to login page
+        // exit;
     } else {
         echo "Error: " .$conn->error;
     }
