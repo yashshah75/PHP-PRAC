@@ -1,3 +1,6 @@
+<!-- ============================================================  -->
+                        <!-- PHP CODE  -->
+<!-- ============================================================ -->
 <?php 
   require_once('database/db.php');
 
@@ -48,6 +51,34 @@
     }    
     
 
+    $check_email = "SELECT * FROM register WHERE email = ?";
+    
+    $stmt = $conn->prepare($check_email); // The prepare() function is used to create a SQL statement template before executing it.
+                                          // This helps prevent SQL injection attacks.
+                                          // It allows binding of parameters dynamically, making queries more efficient and secure.
+    
+    $stmt->bind_param("s", $email); //bind_param                                      
+    $stmt->execute();
+    $stmt->store_result();                                   
+
+    if ($stmt->num_rows > 0) {
+        die("Email already registered!");
+    }    
+    $stmt->close();
+
+
+    $check_username = "SELECT * FROM register WHERE username = ?";
+
+    $stmt = $conn->prepare($check_username);
+    $stmt->bind_param("s",$username);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows > 0) {
+        die("Username already registered!");
+    }    
+    $stmt->close();
+
     // Insert user into the database
     $sql = "INSERT INTO register (username, email, password, confirm_password, mobile) VALUES (?,?, ?, ?, ?)";
     $stmtinsert = $conn->prepare($sql);
@@ -57,7 +88,7 @@
     // to bind actual values to placeholders (?) in an SQL query
     
     if ($stmtinsert->execute()) {
-      echo "INSERTED";  
+      // echo "INSERTED";  
       header("Location: login.php"); // Redirect to login page
         // exit;
     } else {
@@ -73,6 +104,8 @@
   }
 
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -117,6 +150,8 @@
       <div class="loader-fill"></div>
     </div>
   </div>
+
+  
   <!-- [ Pre-loader ] End -->
 
   <div class="auth-main">
@@ -125,6 +160,7 @@
         <div class="auth-header">
           <a href="#"><img src="https://themewagon.github.io/Mantis-Bootstrap/assets/images/logo-dark.svg" alt="img"></a>
         </div>
+
         <div class="card my-5">
           <div class="card-body">
           
@@ -139,7 +175,7 @@
             <div class="col-md-12">  
               <div class="form-group mb-3">
                 <label class="form-label">Your Photo: </label>
-                <input type="file" id="imageInput" name="photo" accept=".jpg, .jpeg, .png" class="form-control">
+                <input type="file" id="imageInput" name="photo" accept=".jpg, .jpeg, .png" class="form-control" Required>
                 <span class="span" style="color:red;"> Only JPG, JPEG, and PNG files are allowed</span>
               </div>
             </div>
@@ -148,7 +184,7 @@
             <div class="col-md-12">
               <div class="form-group mb-3">
                 <label class="form-label">Username</label>
-                <input type="text" class="form-control" placeholder="Enter Your Username" name="username">
+                <input type="text" class="form-control" placeholder="Enter Your Username" name="username" Required>
               </div>
             </div>
             
@@ -160,12 +196,12 @@
             
             <div class="form-group mb-3">
               <label class="form-label">Email Address</label>
-              <input type="email" class="form-control" placeholder="Email Address" name="email">
+              <input type="email" class="form-control" placeholder="Email Address" name="email" Required>
             </div>
             
             <div class="form-group mb-3">
               <label class="form-label">Password</label>
-              <input type="password" class="form-control" placeholder="Password" name="password">
+              <input type="password" class="form-control" placeholder="Password" name="password" Required>
               <span style="color:red";> Password should be in this format: Abc@123 <br>
                Password must be at least 5 characters long</span>
             </div>
@@ -173,7 +209,7 @@
             <div class="col-md-12">
                 <div class="form-group mb-3">
                   <label class="form-label">Confirm Password</label>
-                  <input type="password" class="form-control" placeholder="Confirm Password" name="confirm_password">
+                  <input type="password" class="form-control" placeholder="Confirm Password" name="confirm_password" Required>
                   <span style="color:red";> Password should be in this format: Abc@123</span>
                   <span style="color:red";> Password must be at least 5 characters long</span>
                 </div>
@@ -182,7 +218,7 @@
             <div class="col-md-12">
               <div class="form-group mb-3">
                 <label class="form-label">Phone Number</label>
-                <input type="tel" class="form-control" placeholder="Mobile should be 10 digits" name="mobile">
+                <input type="tel" class="form-control" placeholder="Mobile should be 10 digits" name="mobile" Required>
               </div>
             </div>
 
@@ -235,8 +271,13 @@
         </div>
       </div>
       </form>
+
+      
     </div>
   </div>
+
+
+  
   <!-- [ Main Content ] end -->
   <!-- Required Js -->
   <script src="../assets/js/plugins/popper.min.js"></script>
@@ -447,10 +488,11 @@
 </div> -->
 </body>
 <!-- [Body] end -->
-
-
-<!-- Mirrored from themewagon.github.io/Mantis-Bootstrap/pages/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Mar 2025 07:03:19 GMT -->
 </html>
+
+
+
+
 
 
 
