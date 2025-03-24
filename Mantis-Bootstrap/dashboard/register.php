@@ -12,10 +12,11 @@
       $filename = $_FILES["photo"]["name"];
       $temp_name = $_FILES["photo"]["tmp_name"];
       $file_ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION)); // Extract extension
+      
 
       // Validate file extension
       if (!in_array($file_ext, $allowed_extensions)) {
-          echo "<p style='color:red;'>Only JPG, JPEG, and PNG files are allowed.</p>";
+         die("<p style='color:red;'>Only JPG, JPEG, and PNG files are allowed.</p>");
       } else {
           // Move the file if valid
           $folder = "images/" . $filename;
@@ -27,8 +28,8 @@
 
       // $filename =  $_FILES["upload_file"]["name"];
       // $temp_name = $_FILES["upload_file"]["tmp_name"];
-      $folder = "images/".$filename;
-      move_uploaded_file($temp_name, $folder);
+      // $folder = "images/".$filename;
+      // move_uploaded_file($temp_name, $folder);
 
       $username = trim($_POST['username']);
       $email = trim($_POST['email']);
@@ -80,17 +81,17 @@
     $stmt->close();
 
     // Insert user into the database
-    $sql = "INSERT INTO register (username, email, password, confirm_password, mobile) VALUES (?,?, ?, ?, ?)";
+    $sql = "INSERT INTO register (photo,username, email, password, confirm_password, mobile) VALUES (?,?,?,?,?,?)";
     $stmtinsert = $conn->prepare($sql);
 
-    $stmtinsert->bind_param("sssss", $username, $email, $password, $confirmpassword, $phone);    // bind_param() : bind_param() is a function in PHP used with MySQLi prepared statements
+    $stmtinsert->bind_param("ssssss", $folder, $username, $email, $password, $confirmpassword, $phone);    // bind_param() : bind_param() is a function in PHP used with MySQLi prepared statements
     
     // to bind actual values to placeholders (?) in an SQL query
     
     if ($stmtinsert->execute()) {
       // echo "INSERTED";  
       header("Location: login.php"); // Redirect to login page
-        // exit;
+        exit();
     } else {
         echo "Error: " .$conn->error;
     }

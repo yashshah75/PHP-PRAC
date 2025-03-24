@@ -74,8 +74,8 @@ if(isset($_POST['submit']))
 
     // $filename =  $_FILES["upload_file"]["name"];
     // $temp_name = $_FILES["upload_file"]["tmp_name"];
-    $folder = "images/".$filename;
-    move_uploaded_file($temp_name, $folder);
+    // $folder = "images/".$filename;
+    // move_uploaded_file($temp_name, $folder);
 
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
