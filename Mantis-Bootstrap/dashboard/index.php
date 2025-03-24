@@ -1,34 +1,33 @@
 <?php
-include('database/db.php');
-session_start();
-include('sidebar.php');
-include('header.php');
-        
-?>
+    session_start();
+    include('database/db.php');
+    // include('sidebar.php');
+    // include('header.php');
+    ?>
 
+  <?php
+      // error_reporting(0);
+      $user_profile = $_SESSION['user_name'];
 
-<?php  
-error_reporting(0);
-    $user_profile = $_SESSION['user_name'];
+      if($user_profile == TRUE)
+      {
+        // echo "session";
+          // header('Location: register.php');
+      }
+      else
+      {
+          header('Location: login.php');
+          
+      }
 
-    if($user_profile == TRUE)
-    {
-        // header('Location: register.php');
-    }
-    else
-    {
-        header('Location: login.php');
-        
-    }
+      $query = "SELECT * FROM register";
+      
+      $data = mysqli_query($conn, $query);
 
-    $query = "SELECT * FROM register";
-    
-    $data = mysqli_query($conn, $query);
+      $total = mysqli_num_rows($data); //it will presents how many number of rows are present in the table
 
-    $total = mysqli_num_rows($data); //it will presents how many number of rows are present in the table
-
-    if($total != 0)
-    { 
+      if($total != 0)
+      { 
   ?>
 
 <!DOCTYPE html>
@@ -120,7 +119,7 @@ error_reporting(0);
       </thead>
       <tbody>
 <?php 
-error_reporting(0);
+// error_reporting(0);
     while($result = mysqli_fetch_assoc($data))
     {
         echo "<tr>

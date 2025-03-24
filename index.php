@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="css-dashboard.css">
 
-<?php  
+<?php   
 
     $user_profile = $_SESSION['user_name'];
 
