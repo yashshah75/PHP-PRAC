@@ -154,7 +154,7 @@ if(isset($_POST['submit']))
 
     // Insert user into the database
     $sql = "INSERT INTO register (User_image, username, email, password, confirmPassword, phone) VALUES (?,?, ?, ?, ?, ?)";
-    $stmtinsert = $conn->prepare($sql);
+    $stmtinsert = $conn->prepare($sql); 
 
     $stmtinsert->bind_param("ssssss", $folder, $username, $email, $hashed_password, $hashed_cpass, $phone);    // bind_param() : bind_param() is a function in PHP used with MySQLi prepared statements
     
