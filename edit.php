@@ -103,8 +103,8 @@
         }
     
         // Password will be encrypted by using 
-        $hashed_password = password_hash($password, PASSWORD_BCRYPT); //BCRYPT is secure hashing method 
-        $hashed_cpass = password_hash($confirmPassword, PASSWORD_BCRYPT);
+        // $hashed_password = password_hash($password, PASSWORD_BCRYPT); //BCRYPT is secure hashing method 
+        // $hashed_cpass = password_hash($confirmPassword, PASSWORD_BCRYPT);
 
         $query = "UPDATE register SET User_image = '$folder', username='$username', email='$email', password='$hashed_password', confirmPassword='$hashed_cpass', phone='$phone' WHERE id='$uid'";
 

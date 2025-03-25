@@ -139,7 +139,6 @@ if(isset($_POST['submit']))
     }    
     $stmt->close();
 
-
     $check_username = "SELECT * FROM register WHERE username = ?";
 
     $stmt = $conn->prepare($check_username);

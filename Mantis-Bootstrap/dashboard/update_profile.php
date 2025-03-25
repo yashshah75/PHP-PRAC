@@ -1,3 +1,26 @@
+<?php 
+  session_start();
+  require_once('database/db.php');
+  $uid = $_GET['Id'];
+
+  $user_profile = $_SESSION['user_name'];
+
+  if($use_profile == true)
+  {
+
+  }
+  else
+  {
+    header('Location: login.php');
+
+  }
+
+  $query = "SELECT * FROM register WHERE id='$uid'";
+  $data = mysqli_query($conn, $query);
+
+  $result = mysqli_fetch_assoc($data);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <!-- [Head] start -->
@@ -58,6 +81,13 @@
               <!-- <a href="login.php" class="link-primary">Already have an account?</a> -->
             </div>
             <!-- <div class="row"> -->
+              <div class="col-md-12">  
+                <div class="form-group mb-3">
+                  <label class="form-label">Your Photo: </label>
+                  <input type="file" id="imageInput" name="photo" accept=".jpg, .jpeg, .png" class="form-control" Required>
+                  <span class="span" style="color:red;"> Only JPG, JPEG, and PNG files are allowed</span>
+                </div>
+              </div>
 
               <div class="col-md-12">
                 <div class="form-group mb-3">
@@ -67,27 +97,15 @@
               </div>
             
             <!-- </div> -->
-            <!-- <div class="form-group mb-3">
+            <div class="form-group mb-3">
               <label class="form-label">Email</label>
               <input type="email" class="form-control" placeholder="Enter Your Email">
-            </div> -->
+            </div>
             
             <div class="form-group mb-3">
               <label class="form-label">Email Address</label>
               <input type="email" class="form-control">
             </div>
-            
-            <!-- <div class="form-group mb-3">
-              <label class="form-label">Password</label>
-              <input type="password" class="form-control">
-            </div>
-
-            <div class="col-md-12">
-                <div class="form-group mb-3">
-                  <label class="form-label">Confirm Password</label>
-                  <input type="text" class="form-control" >
-                </div>
-              </div> -->
 
               <div class="col-md-12">
                 <div class="form-group mb-3">
@@ -95,9 +113,10 @@
                   <input type="text" class="form-control">
                 </div>
               </div>
+
             <!-- <p class="mt-4 text-sm text-muted">By Signing up, you agree to our <a href="#" class="text-primary"> Terms of Service </a> and <a href="#" class="text-primary"> Privacy Policy</a></p> -->
             <div class="d-grid mt-3">
-              <a href="index.php"><button type="button" class="btn btn-primary">UPDATE</button></a><br>
+              <button type="submit" class="btn btn-primary" name = "update">UPDATE</button></a><br>
               <a href="index.php">Back</a>
             </div>
 
@@ -335,3 +354,58 @@
 
 <!-- Mirrored from themewagon.github.io/Mantis-Bootstrap/pages/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Mar 2025 07:03:19 GMT -->
 </html>
+
+
+
+<?php 
+  if(isset($_POST['update']))
+  {
+    $photo = trim($_POST['photo']);
+    $username = trim($_POST['username']);
+    $email = trim($_POST['email']);
+    $phone = trim($_POST['phone']);
+
+    if (!empty($_FILES['photo']['name'])) {
+      $filename = $_FILES['photo']['name'];
+      $tempname = $_FILES['photo']['tmp_name'];
+      $folder = "images/".$filename;
+      
+      if(!move_uploaded_file($tempname, $folder))
+      {
+          die("File Upload Failed");
+      }
+  }
+
+      if(empty($username) || empty($email) || empty($phone)) {
+          die("All fields are required!");
+      }
+
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+          die("Invalid email format!");
+      }
+
+
+      $query = "UPDATE register SET image = '$folder', username='$username', email='$email', phone='$phone' WHERE id='$uid'";
+
+        $data = mysqli_query($conn,$query);
+    
+        if(!$data)
+        {
+            echo "Record not Updated";
+        }
+        else
+        {   
+        ?>
+          <meta http-equiv = "refresh" content = "2; url = http://localhost/1.%20AORC%20TECHNOLOGIES/PRACTICE/7.crud_html/Mantis-Bootstrap/dashboard/index.php />
+        
+        <?php
+            echo "";
+            
+            $message = "Record Updated Successfully!";
+            echo "<div style='padding: 10px; background-color: green; color: white; text-align: center;'>$message</div>";
+        }
+
+    }
+
+
+?>
