@@ -8,8 +8,8 @@ include("db.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_password = $_POST['password'];
     $confirm_password = $_POST['confirmPassword'];
+    
     $token = $_GET['token'];
-
     if (!isset($_GET['token'])) {
         die("Invalid or missing token!");
     }
