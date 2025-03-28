@@ -2,8 +2,6 @@
 session_start();
 include("db.php");
 
-
-
 // $token = $_GET['token'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_password = $_POST['password'];

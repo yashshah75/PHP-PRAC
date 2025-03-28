@@ -48,6 +48,13 @@
           die("Invalid email format!");
       }
 
+      if (strlen($username) < 3) {
+        die("<p style='color:red;'>Username must be at least 3 characters long.</p>");
+      }
+
+      if (!preg_match('/^\+?[0-9]{10,15}$/', $phone)) {
+        die("<p style='color:red;'>Invalid phone number format! (10-15 digits, optional + at the start).</p>");
+      }
 
       $query = "UPDATE register SET photo = '$folder', username='$username', email='$email', mobile='$phone' WHERE id='$uid'";
 
@@ -60,13 +67,13 @@
         else
         {   
           ?>
-        <meta http-equiv = "refresh" content = "10; url = http://localhost/1.%20AORC%20TECHNOLOGIES/PRACTICE/7.crud_html/Mantis-Bootstrap/dashboard/index.php" />
+        <meta http-equiv = "refresh" content = "2; url = http://localhost/1.%20AORC%20TECHNOLOGIES/PRACTICE/7.crud_html/Mantis-Bootstrap/dashboard/index.php" />
         
         <?php
-            // echo "";
+            echo "";
           
         $message = "Record Updated Successfully!";
-        echo "<div style='padding: 10px; background-color: green; color: white; text-align: center;'>$message</div>";
+        echo "<div style='padding: 10px; background-color: green; color: white; text-align: center;  position: relative; z-index: 999;'>$message</div>";
         }
 
     }
@@ -161,7 +168,8 @@
               <div class="col-md-12">
                 <div class="form-group mb-3">
                   <label class="form-label">Phone Number</label>
-                  <input type="text" class="form-control" value="<?php echo $result['mobile']?>" name="mobile">
+                  <input type="text" class="form-control" value="<?php echo $result['mobile']?>" name="mobile" placeholder="10-15 digits, optional + at the start">
+                  <span style="color:red"> Number Should be 10-15 digits, optional + at the start</span>
                 </div>
               </div>
 
