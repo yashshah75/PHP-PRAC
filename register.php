@@ -67,7 +67,7 @@ if(isset($_POST['submit']))
         // Move the file if valid
         $folder = "images/" . $filename;
         if (!move_uploaded_file($temp_name, $folder)) {
-            echo "<p style='color:red;'>File upload failed!</p>";  
+            echo "<p style='color:red;'>File ~upload failed!</p>";  
         }
     }
     //for upload the file
