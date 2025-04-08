@@ -123,5 +123,23 @@ Community Support:
 	Not Truly Drag-and-Drop (by default)
 
 	WordPress alone isn’t as intuitive as some website builders like Wix or Squarespace—though page builders like Elementor or Divi help.
+================================================================================================================================
 
+9) To Open the Website from admin side in WordPress:
+	http://localhost/blogwebsite/wordpress(means foldername)/wp-admin 
 
+================================================================================================================================
+
+10) To Open the Website from client's side in WordPress:
+	http://localhost/blogwebsite/wordpress(means foldername) 
+
+================================================================================================================================
+
+11) You can only active one theme at a time not more than one
+================================================================================================================================
+
+12) What is Slug in WordPress?
+Ans: Slug in WordPress Means a Url which means the path from it we can open particular page  
+================================================================================================================================
+
+13) 

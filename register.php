@@ -70,12 +70,7 @@ if(isset($_POST['submit']))
             echo "<p style='color:red;'>File ~upload failed!</p>";  
         }
     }
-    //for upload the file
-
-    // $filename =  $_FILES["upload_file"]["name"];
-    // $temp_name = $_FILES["upload_file"]["tmp_name"];
-    // $folder = "images/".$filename;
-    // move_uploaded_file($temp_name, $folder);
+    
 
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
@@ -92,28 +87,7 @@ if(isset($_POST['submit']))
             
         die("Password is not in correct format");
     }    
-    
-    // if (!preg_match('/^(?=.*[A-Z])(?=.*\d)(?=(?:.*[\W_]){1})(?!.*[\W_]{2,}).{5,}$/', $password)) {
-    //     echo "Password must be at least 5 characters long, contain at least one uppercase letter, one number, and one special character. <br>";    
-    // } 
 
-
-    // if (strlen($password) < 3) {
-    //     echo "Password must be at least 5 characters long.<br>";    
-    // }
-    // if (!preg_match('/[A-Z]/', $password)) {
-    //     echo "Password must contain at least one uppercase letter.<br>";    
-    // }
-    // if (!preg_match('/\d/', $password)) {    
-    //     echo "Password must contain at least one number.<br>";    
-    // }
-    // if (!preg_match('/[\W_]/', $password)) {
-    //     echo "Password must contain at least one special character.<br>";    
-    // }
-
-    // if (strlen($password) < 3) {
-    //     die("Password must be at least 3 characters long and include an uppercase letter & a number.");    
-    // }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         die("Invalid email format!");
