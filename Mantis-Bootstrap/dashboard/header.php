@@ -46,7 +46,6 @@
                 echo "<span>Guest</span>"; // Default text if the user is not logged in
                     } ?>
 
-            
           </div>
         </li>
         <li class="dropdown pc-h-item header-user-profile">
@@ -55,7 +54,7 @@
             <?php if (isset($_SESSION['user_name'])) {
                 echo "<span>".$_SESSION['user_name']."</span>";}
               else {
-                echo "<span>Guest</span>"; // Default text if the user is not logged in
+                echo "<span>Guest</span>"; // Default text if the user is not logged in $_SESSION['user_image'] = "john.png";
                     } ?>
            
           </a>
