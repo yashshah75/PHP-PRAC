@@ -29,8 +29,106 @@ updated at
 
 
 ==========================
-07/04/25: [YASH]
+08/04/25: [YASH]
 ==========================
-1) Completed CRUD in POST [Add (With Current time), Update (With Current time), Delete Post]
+1) Watch 8 video of WordPress 
 
+======================
+09/04/25: [YASH]
+======================
+1) Watch 9 to 12 video of WordPress and do practice
+
+
+
+======================
+11/04/25: [YASH]
+======================
+-> Learned:
+	1) How to Activate Theme
+	2) How to Create Pages, Post, Menu, Pagination in post
+	3) How to create Categories, Subcategories
+	4) How to Add comments, Remove in Trash, Delete Permanently, How to Approve Comment.
+	5) How to Create or Change Permalink(Slug or URL)
+	6) How to Create Separated Page For Only Post
+	7) How to Customize Excerpt 
+	8) How to Add widgets
+
+========================================================================================================
+
+======================
+14/04/25: [YASH]
+======================
+-> Today, I have done Captcha in login & Register Page
+-> Watch video till 23, in these video i learned about: How to use Calendar, 
+Category & Post(Display Recent Posts) Widgets, logo, Site-icon(fav-icon), Tagline & Title of site
+
+
+
+
+
+======================
+15/04/25: [YASH]
+======================
+-> Video: till 27
+-> in that videos, I learned How to add footer, in footer we can add 1,2,3 or 4 columns and how to make it attractive with Columns adding table, links, Photos, colors etc..
+and in RSS feed, what is RSS feed and How to add RSS feed with the help of link in our theme
+and in Wordpress visitor counter, learn about how to add plugins for visitor like how many visitors are visit our site
+and in image gallery, how to add image gallery in the page
+
+
+
+======================
+16/04/25: [YASH]
+======================
+-> Video: till 32
+in that, Learn about use gallery plugin, adding image lightbox, schedule the post, and how to organize wordpress files
+-> Do email verification at login time
+
+======================
+17/04/25: [YASH]
+======================
+-> Video: till 37
+Learned: 1) Slider with different Plugins
+2) How to make Normal Slider
+3) how to make carousel slider
+4) Create responsive menu help through plugin
+
+
+
+==========================
+18/04/25: [YASH]
+==========================
+1) Video: till 42
+-> Learn How to Protect a page or Post by using password 
+-> how to increase upload file size
+-> how to duplicate page or post
+-> How to create wordpress slider using smart slider 3 plugin.
+-> learn how to add animation, shadow, autoplay, add button and heading 
+-> learn how to make a quiz in form
+
+==========================
+21/04/25: [YASH]
+==========================
+-> Videos till : 47, complete video:44 (skipped on Friday)
+-> File Attachment use of Plugin
+-> Remove Footer from the file ditor 
+-> add Popup message
+-> Done Sending Email on contact us form 
+
+
+==========================
+22/04/25: [YASH]
+==========================
+-> Video till: 52
+-> How to Embedded Plugin With the help of Plugin,
+-> How to Create Table With the help of Plugin, 
+    in that:	
+	=> How to enable create table, 
+	=> sorting table data,
+	=> add rows & Columns, 
+	=> Set Color, Font, Pagination
+
+-> How to Hide a Particular Widgets Title (Plugin) 
+-> How to add WhatsApp chat on all the pages (Plugin)
+-> Disable Right click, Copy, F12, Save, By roles on the page 
 

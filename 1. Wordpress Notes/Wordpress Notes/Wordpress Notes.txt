@@ -1,0 +1,226 @@
+WORDPRESS NOTES:
+
+1) What is CMS? 
+Ans: CMS-> CONTENT MANAGEMENT SYSTEM
+	It is used to manage the creation and modifications of Digital Content.
+========================================================================================================================================
+
+2) Types of CMS
+Ans: 1) WordPress
+     2) Joomla
+     3) Magento
+========================================================================================================================================
+
+3) What is WordPress?
+Ans: WordPress is a free and Open-source content management system written in PHP and paired with MySQL or MariaDB Database.
+
+-> Features include a plugin architecture and a template system, referred to within WordPress as Themes.
+========================================================================================================================================
+
+4) WordPress Comes in two versions:
+
+	WordPress.org – self-hosted (you host it yourself).
+
+	WordPress.com – hosted version (managed for you).
+========================================================================================================================================
+
+5) ✅ Why do people use WordPress?
+
+User-friendly:
+	You can create and manage pages, blog posts, and media using a simple dashboard.
+
+Customizable:
+	Thousands of free and paid themes and plugins to change how your site looks and works.
+
+No coding needed (but you can if you want):
+	Perfect for beginners, but developers can dive deep too.
+
+SEO-friendly:
+	Built with clean code, and there are powerful SEO plugins like Yoast SEO or Rank Math.
+
+Scalable:
+	Works for everything from small blogs to large eCommerce stores.
+
+Community Support:
+	Huge global community, tons of tutorials, forums, and free help online.
+
+Open source: 
+
+Flexibility: 
+
+Cost-effective: 
+
+frequently Updates : 
+
+========================================================================================================================================
+
+6)  Common uses for WordPress:
+
+	Personal blogs
+
+	Business websites
+
+	eCommerce stores (with WooCommerce)
+
+	Portfolios
+
+	Membership sites
+
+	Online courses
+========================================================================================================================================
+7) ✅ Advantages of WordPress
+	Free and Open-Source
+
+	WordPress itself is free to use.
+
+	You can modify the code and customize it as needed.
+	
+	Easy to Use
+
+	No coding required for basic use.
+
+	User-friendly dashboard for content and media management.
+
+	Highly Customizable
+
+	Thousands of themes (design templates) and plugins (add-on features).
+
+	Easy to change the look and functionality of your site.
+
+	SEO-Friendly
+
+	Clean structure and plugins like Yoast SEO make it easier to rank in search engines.
+
+	Responsive Design
+
+	Most modern themes are mobile-friendly out of the box.
+
+	Large Community & Support
+
+	Tons of tutorials, forums, and developers available for help.
+
+	Regular updates and security patches.
+
+	Flexible Use Cases
+
+	Blog, business site, eCommerce, portfolio, membership site, and more—all possible.
+========================================================================================================================================
+
+8) ❌ Disadvantages of WordPress
+	
+	Needs Regular Maintenance
+
+	You need to update themes, plugins, and WordPress core regularly.
+
+	Can Be Vulnerable
+
+	Being popular makes it a target for hackers.
+
+	Poorly coded plugins or outdated themes can be risky.
+
+	Can Get Slower with Too Many Plugins
+
+	Installing lots of plugins can slow down your site if not managed properly.
+
+	Learning Curve for Advanced Features
+
+	Basic use is simple, but complex features (like custom themes or advanced SEO) may require technical skills.
+
+	Customization Might Require Coding
+
+	For full control or unique designs, you might need HTML, CSS, PHP, or JavaScript knowledge.
+
+	Not Truly Drag-and-Drop (by default)
+
+	WordPress alone isn’t as intuitive as some website builders like Wix or Squarespace—though page builders like Elementor or Divi help.
+================================================================================================================================
+
+9) To Open the Website from admin side in WordPress:
+	http://localhost/blogwebsite/wordpress(means Folder Name)/wp-admin 
+
+================================================================================================================================
+
+10) To Open the Website from client's side in WordPress:
+	http://localhost/blogwebsite/wordpress(means Folder Name) 
+
+================================================================================================================================
+
+11) You can only active one theme at a time not more than one
+================================================================================================================================
+
+12) What is Slug in WordPress?
+Ans: Slug in WordPress Means a Url which means the path from it we can open particular page  
+================================================================================================================================
+
+13) excerpt : it means short description
+
+================================================================================================================================ 
+
+14) What is Permalink?: URL OR SLUG
+================================================================================================================================ 
+
+15) Widgets: It is prebuilt component or block which can be use in our site. like search bar, Youtube embedded etc.....
+
+================================================================================================================================ 
+
+16) What is Footer and it's type: 
+ans: footer is located at the bottom of the page. 
+types: 1) Left Footerx1
+2) Right Footer
+3) Footer sidebar 1 [if we are taking 3 column design]
+4) Footer sidebar 2 [if we are taking 3 column design]
+5) Footer sidebar 3 [if we are taking 3 column design]
+
+-> if we are taking 4 columns in footer than it will come with footer sidebar 4 
+
+================================================================================================================================ 
+
+17)What is RSS? 
+Ans: RSS stands for Really Simple Syndication or Rich Site Summary.
+syndication means distributing or sharing content to multiple places or platform
+
+================================================================================================================================ 
+
+18) What is meta slider?
+ans: it is a plugin which helps to make a slider with multiple images
+
+================================================================================================================================ 
+
+19) What is Plugin? 
+Ans: A plugin in WordPress is a piece of software that adds specific features or functionality to your WordPress site — without needing to write any code.	
+
+================================================================================================================================ 
+
+20) What is Carousel slider? 
+ans: it is used if we want to go on the first pic and we are on third pic then we can use it.
+
+================================================================================================================================ 
+
+21) What should I do if i want to increase upload media limit? 
+ans: use this code into your project .htaccess file: 
+	php_value upload_max_filesize 128M
+	php_value post_max_size 128M
+	php_value memory_limit 256M
+	php_value max_execution_time 300
+	php_value max_input_time 300
+=================================================================================================================================
+
+22) what is global break point?
+ans: You can set width according to the portrait and Landscape
+
+=================================================================================================================================
+23) where to us smart slider and meta slider?
+ans: you can use smart slider when you want advance custom slider with animation, video, or complex layouts.
+and you can use meta slider when you want simple and quick slider, specially for image slider.
+=================================================================================================================================
+
+24) How to send mail with the use of This Plugin : wp mail smtp  
+Ans: First of all we have to: 
+1) go to google
+2) enables api and servces 
+3) go to api library 
+4) search gmail api 
+5) then get the help of video on youtube with the same of the plugin
+
+=================================================================================================================================
+25) 

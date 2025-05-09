@@ -1,0 +1,36 @@
+your-theme-name/
+├── style.css           → Required. Theme header info + main CSS.
+├── index.php           → Required. Fallback template.
+├── functions.php       → Theme functions, hooks, and setup.
+├── screenshot.png      → Optional. Theme preview image in WP admin.
+├── header.php          → Site <head> + opening <body>.
+├── footer.php          → Site footer (closing tags, etc.).
+├── sidebar.php         → Sidebar content (widgets, etc.).
+├── page.php            → Template for static pages.
+├── single.php          → Template for single posts.
+├── archive.php         → Template for categories, tags, authors.
+├── search.php          → Template for search results.
+├── 404.php             → Template for not found pages.
+├── comments.php        → Template for post comments.
+├── style.css           → Main stylesheet (includes theme metadata)
+└── /template-parts/    → Reusable chunks (e.g., post content layouts)
+
+
+
+-> In the templates -Parts Folder there are Header File, Footer File, Post File, 
+
+=================================================================================================
+
+-> There are some required files in the folder: 
+		1) Index.html/php
+		2) Style.css
+		3) function.php
+
+=================================================================================================
+-> there are also some optional files and folders: 
+	1)
+	2) readme.txt
+	3) screenshot.png
+	4) theme.jsony -> It's used to define and control the styles, settings, and layout of a theme in a centralized and standardized way.
+
+============================================================================================================================================
